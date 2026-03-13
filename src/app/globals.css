@@ -3,24 +3,103 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --brand: #512376;
+  --brand-dark: #512376;
+  --brand-light: #f3eaf8;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-light: var(--brand-light);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes word-found {
+  0%   { opacity: 0; background-color: #d9b8f0; transform: scale(0.95); }
+  40%  { opacity: 1; background-color: #d9b8f0; transform: scale(1.02); }
+  70%  { background-color: #f3eaf8; transform: scale(1); }
+  100% { background-color: transparent; }
+}
+
+.animate-word-found {
+  animation: word-found 0.9s ease-out both;
+  border-radius: 0.25rem;
+  padding: 0 0.25rem;
+  display: inline-block;
+}
+
+@keyframes drop-bounce {
+  0%   { transform: translateY(-120px); opacity: 0; }
+  60%  { transform: translateY(16px);   opacity: 1; }
+  75%  { transform: translateY(-8px); }
+  88%  { transform: translateY(6px); }
+  100% { transform: translateY(0); }
+}
+
+.animate-drop-bounce {
+  animation: drop-bounce 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.card-3d {
+  background: #ffffff;
+  border: 2px solid #512376;
+  border-radius: 0.75rem;
+  box-shadow: 0 5px 0 #512376;
+  transform: translateY(0);
+  transition: box-shadow 0.1s ease, transform 0.1s ease;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+}
+
+.card-3d:hover,
+.card-3d:focus,
+.card-3d:focus-visible {
+  box-shadow: 0 0px 0 #512376;
+  transform: translateY(5px);
+  outline: none;
+}
+
+.card-3d:active {
+  box-shadow: 0 0px 0 #512376;
+  transform: translateY(5px);
+  outline: none;
+}
+
+.btn-3d {
+  background: #f9a8d4;
+  color: #ffffff;
+  font-weight: 600;
+  border: 2px solid #512376;
+  border-radius: 0.5rem;
+  box-shadow: 0 5px 0 #512376;
+  transform: translateY(0);
+  transition: box-shadow 0.1s ease, transform 0.1s ease;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+}
+
+.btn-3d:hover,
+.btn-3d:focus,
+.btn-3d:focus-visible {
+  box-shadow: 0 0px 0 #512376;
+  transform: translateY(5px);
+  outline: none;
+}
+
+.btn-3d:active {
+  box-shadow: 0 0px 0 #512376;
+  transform: translateY(5px);
+  outline: none;
 }

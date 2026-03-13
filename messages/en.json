@@ -1,0 +1,119 @@
+{
+  "site": {
+    "name": "Biyoleta",
+    "description": "Bisaya (Cebuano) dictionary. Search words and phrases in English and Japanese."
+  },
+  "nav": {
+    "words": "Words",
+    "phrases": "Phrases",
+    "translate": "Translate",
+    "browse": "Browse",
+    "quiz": "Quiz"
+  },
+  "home": {
+    "subtitle": "Where Bisaya Blooms.",
+    "description": "Bisaya / Cebuano Dictionary & Learning",
+    "placeholder": "Search for a word",
+    "search": "Search",
+    "browseWords": "Words",
+    "browsePhrases": "Phrases",
+    "translate": "Translate",
+    "browse": "Categories",
+    "quiz": "Quiz"
+  },
+  "words": {
+    "title": "Word List",
+    "back": "← Home"
+  },
+  "word": {
+    "back": "← Word list",
+    "meaning": "Meaning",
+    "example": "Example",
+    "relatedWords": "Related Words",
+    "relatedPhrases": "Related Phrases"
+  },
+  "phrases": {
+    "title": "Phrases",
+    "subtitle": "Useful Bisaya phrases for everyday life",
+    "back": "← Home",
+    "backToCategories": "← Phrases",
+    "example": "Example",
+    "phraseCount": "{count} phrases",
+    "noPhrasesYet": "No phrases yet."
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Enter a Bisaya word...",
+    "button": "Search",
+    "back": "← Home",
+    "results": "{count} result(s) for \"{query}\"",
+    "noResults": "No results found.",
+    "partOfSpeech": "part of speech"
+  },
+  "quiz": {
+    "title": "Quiz",
+    "subtitle": "Test your Bisaya vocabulary",
+    "modeLabel": "Choose a mode",
+    "modeBisayaToEn": "Bisaya → English",
+    "modeEnToBisaya": "English → Bisaya",
+    "start": "Start Quiz",
+    "question": "Question {current} / {total}",
+    "correct": "Correct!",
+    "incorrect": "Incorrect",
+    "correctAnswer": "Correct answer: {answer}",
+    "next": "Next",
+    "result": "Result",
+    "score": "{score} / {total}",
+    "excellent": "Excellent!",
+    "good": "Good job!",
+    "keep": "Keep practicing!",
+    "retry": "Try Again",
+    "backHome": "← Home",
+    "notEnoughWords": "Not enough words in the database to start a quiz."
+  },
+  "howToSay": {
+    "title": "How to say \"{word}\" in Bisaya",
+    "description": "How to say \"{word}\" in Bisaya (Cebuano) — pronunciation, meaning, and example sentences.",
+    "heading": "How to say \"{word}\" in Bisaya",
+    "answer": "The Bisaya word for \"{word}\" is:",
+    "pronunciation": "Pronunciation",
+    "example": "Example",
+    "seeMore": "See full entry →",
+    "noResult": "No result found for \"{word}\".",
+    "alsoSee": "Also see"
+  },
+  "languagePair": {
+    "title": "{word} in Bisaya",
+    "description": "How to say \"{word}\" in Bisaya (Cebuano). Translation, meaning, and example sentences.",
+    "heading": "How to say \"{word}\" in Bisaya",
+    "bisayaWord": "Bisaya word",
+    "meaning": "Meaning",
+    "example": "Example",
+    "seeMore": "See full entry →",
+    "noResult": "No Bisaya translation found for \"{word}\".",
+    "relatedSearches": "Related searches"
+  },
+  "categories": {
+    "title": "Browse",
+    "back": "← Home",
+    "byCategory": "By Category",
+    "byPartOfSpeech": "By Part of Speech",
+    "uncategorized": "Uncategorized",
+    "words": "{count} words"
+  },
+  "category": {
+    "backToCategories": "← Browse",
+    "words": "{count} words"
+  },
+  "translate": {
+    "title": "Translate",
+    "subtitle": "Search Bisaya words by English or Japanese",
+    "placeholder": "e.g. water, good morning, ありがとう",
+    "button": "Search",
+    "back": "← Home",
+    "results": "{count} result(s) for \"{query}\"",
+    "noResults": "No results found.",
+    "wordsSection": "Words",
+    "phrasesSection": "Phrases"
+  }
+}

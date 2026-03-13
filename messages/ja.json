@@ -1,0 +1,119 @@
+{
+  "site": {
+    "name": "Biyoleta",
+    "description": "ビサヤ語（セブアノ語）辞典。英語・日本語から単語・フレーズを検索できます。"
+  },
+  "nav": {
+    "words": "単語",
+    "phrases": "フレーズ",
+    "translate": "翻訳",
+    "browse": "カテゴリ",
+    "quiz": "クイズ"
+  },
+  "home": {
+    "subtitle": "ここから広がるビサヤ語",
+    "description": "ビサヤ語 / セブアノ語 辞書＆学習",
+    "placeholder": "単語を入力してください",
+    "search": "検索",
+    "browseWords": "単語",
+    "browsePhrases": "フレーズ",
+    "translate": "翻訳検索",
+    "browse": "カテゴリ",
+    "quiz": "クイズ"
+  },
+  "words": {
+    "title": "単語一覧",
+    "back": "← トップ"
+  },
+  "word": {
+    "back": "← 単語一覧",
+    "meaning": "意味",
+    "example": "例文",
+    "relatedWords": "関連単語",
+    "relatedPhrases": "関連フレーズ"
+  },
+  "phrases": {
+    "title": "フレーズ",
+    "subtitle": "日常で使えるビサヤ語フレーズ",
+    "back": "← トップ",
+    "backToCategories": "← フレーズ",
+    "example": "例文",
+    "phraseCount": "{count}フレーズ",
+    "noPhrasesYet": "フレーズはまだありません。"
+  },
+  "search": {
+    "title": "検索",
+    "placeholder": "ビサヤ語を入力...",
+    "button": "検索",
+    "back": "← トップ",
+    "results": "「{query}」の検索結果: {count}件",
+    "noResults": "該当する単語が見つかりませんでした。",
+    "partOfSpeech": "品詞"
+  },
+  "quiz": {
+    "title": "クイズ",
+    "subtitle": "ビサヤ語の語彙力テスト",
+    "modeLabel": "モードを選択",
+    "modeBisayaToEn": "ビサヤ語 → 日本語",
+    "modeEnToBisaya": "日本語 → ビサヤ語",
+    "start": "スタート",
+    "question": "問題 {current} / {total}",
+    "correct": "正解！",
+    "incorrect": "不正解",
+    "correctAnswer": "正解: {answer}",
+    "next": "次へ",
+    "result": "結果",
+    "score": "{score} / {total}",
+    "excellent": "すばらしい！",
+    "good": "よくできました！",
+    "keep": "もっと練習しましょう！",
+    "retry": "もう一度",
+    "backHome": "← トップ",
+    "notEnoughWords": "クイズを始めるのに十分な単語がありません。"
+  },
+  "howToSay": {
+    "title": "ビサヤ語で「{word}」の言い方",
+    "description": "ビサヤ語（セブアノ語）で「{word}」はどう言う？発音・意味・例文つき。",
+    "heading": "ビサヤ語で「{word}」はどう言う？",
+    "answer": "「{word}」のビサヤ語は：",
+    "pronunciation": "発音",
+    "example": "例文",
+    "seeMore": "詳細を見る →",
+    "noResult": "「{word}」の結果が見つかりませんでした。",
+    "alsoSee": "関連"
+  },
+  "languagePair": {
+    "title": "ビサヤ語で{word}",
+    "description": "「{word}」のビサヤ語（セブアノ語）訳。意味・例文つき。",
+    "heading": "「{word}」はビサヤ語で？",
+    "bisayaWord": "ビサヤ語",
+    "meaning": "意味",
+    "example": "例文",
+    "seeMore": "詳細を見る →",
+    "noResult": "「{word}」のビサヤ語訳が見つかりませんでした。",
+    "relatedSearches": "関連検索"
+  },
+  "categories": {
+    "title": "カテゴリ・品詞",
+    "back": "← トップ",
+    "byCategory": "カテゴリ別",
+    "byPartOfSpeech": "品詞別",
+    "uncategorized": "未分類",
+    "words": "{count}語"
+  },
+  "category": {
+    "backToCategories": "← カテゴリ一覧",
+    "words": "{count}語"
+  },
+  "translate": {
+    "title": "翻訳検索",
+    "subtitle": "日本語または英語からビサヤ語を検索",
+    "placeholder": "例：水、good morning、ありがとう",
+    "button": "検索",
+    "back": "← トップ",
+    "results": "「{query}」の検索結果: {count}件",
+    "noResults": "該当する結果が見つかりませんでした。",
+    "wordsSection": "単語",
+    "phrasesSection": "フレーズ"
+  }
+}
