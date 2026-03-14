@@ -1,6 +1,6 @@
 {
   "site": {
-    "name": "Biyoleta",
+    "name": "Biyoleta｜Where Bisaya Blooms",
     "description": "Bisaya (Cebuano) dictionary. Search words and phrases in English and Japanese."
   },
   "nav": {
@@ -11,7 +11,7 @@
     "quiz": "Quiz"
   },
   "home": {
-    "subtitle": "Where Bisaya Blooms.",
+    "subtitle": "Where Bisaya Blooms",
     "description": "Bisaya / Cebuano Dictionary & Learning",
     "placeholder": "Search for a word",
     "search": "Search",

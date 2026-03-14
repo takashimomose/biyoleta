@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'site' })
   return {
-    title: { default: t('name'), template: `%s | ${t('name')}` },
+    title: { default: t('name'), template: `%s | Biyoleta` },
     description: t('description'),
     openGraph: { siteName: t('name'), type: 'website' },
   }
