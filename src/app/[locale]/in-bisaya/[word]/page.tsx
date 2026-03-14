@@ -53,7 +53,7 @@ export default async function InBisayaPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="flex items-center justify-between mb-8">
-        <Link href={`/${locale}`} className="text-sm text-gray-500 hover:underline">{t('back')}</Link>
+        <Link href={`/${locale}`} className="text-sm text-gray-500 hover:opacity-70">{t('back')}</Link>
       </div>
 
       <h1 className="text-3xl font-bold mb-2 capitalize">{t('heading', { word: label })}</h1>
@@ -73,7 +73,7 @@ export default async function InBisayaPage({ params }: Props) {
               </div>
               <Link
                 href={`/${locale}/dictionary/${r.word}`}
-                className="text-sm text-gray-500 hover:underline whitespace-nowrap mt-1"
+                className="text-sm text-gray-500 hover:opacity-70 whitespace-nowrap mt-1"
               >
                 {t('seeMore')}
               </Link>

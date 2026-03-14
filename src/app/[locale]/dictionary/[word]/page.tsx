@@ -87,7 +87,7 @@ export default async function WordPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="flex items-center justify-between mb-8">
-        <Link href={`/${locale}/dictionary`} className="text-sm text-gray-500 hover:underline">{t('back')}</Link>
+        <Link href={`/${locale}/dictionary`} className="text-sm text-gray-500 hover:opacity-70">{t('back')}</Link>
       </div>
 
       <div className="border-b border-gray-200 pb-6 mb-6">
@@ -122,7 +122,7 @@ export default async function WordPage({ params }: Props) {
             {m.meaning_en && locale === 'en' && (
               <Link
                 href={`/how-to-say/${m.meaning_en.split(',')[0].trim().toLowerCase().replace(/\s+/g, '-')}-in-bisaya`}
-                className="text-xs text-gray-400 hover:underline"
+                className="text-xs text-gray-400 hover:opacity-70"
               >
                 How to say &ldquo;{m.meaning_en.split(',')[0].trim()}&rdquo; in Bisaya →
               </Link>
@@ -142,7 +142,7 @@ export default async function WordPage({ params }: Props) {
               <Link
                 key={r.id}
                 href={`/${locale}/dictionary/${r.word}`}
-                className="border border-gray-200 rounded-full px-3 py-1 text-sm font-medium hover:bg-gray-50 transition-colors"
+                className="border border-gray-200 rounded-full px-3 py-1 text-sm font-medium hover:bg-purple-50 transition-colors"
               >
                 {r.word}
               </Link>
@@ -190,7 +190,7 @@ async function AZPage({ locale, letter }: { locale: string; letter: string }) {
   return (
     <main className="min-h-screen p-4 sm:p-8 max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-8">
-        <Link href={`/${locale}/dictionary`} className="text-sm text-gray-500 hover:underline">← Dictionary</Link>
+        <Link href={`/${locale}/dictionary`} className="text-sm text-gray-500 hover:opacity-70">← Dictionary</Link>
       </div>
       <div className="flex items-baseline justify-between mb-6">
         <h1 className="text-2xl font-bold">Bisaya words: {letter.toUpperCase()}</h1>
@@ -202,7 +202,7 @@ async function AZPage({ locale, letter }: { locale: string; letter: string }) {
           <li key={word.id}>
             <Link
               href={`/${locale}/dictionary/${word.word}`}
-              className="flex items-center justify-between py-3 hover:bg-gray-50 px-2 rounded transition-colors"
+              className="flex items-center justify-between py-3 hover:bg-purple-50 px-2 rounded transition-colors"
             >
               <span className="font-medium text-lg">{word.word}</span>
               <span className="text-sm text-gray-400">{word.part_of_speech}</span>

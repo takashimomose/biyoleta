@@ -150,7 +150,7 @@ export default function Flashcards({ words, locale, messages: m }: Props) {
           )}
           <button
             onClick={() => start(words)}
-            className="px-6 py-3 rounded-full border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors text-sm"
+            className="px-6 py-3 rounded-full border border-gray-300 text-gray-600 hover:bg-purple-50 transition-colors text-sm"
           >
             {m.retry}
           </button>

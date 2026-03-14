@@ -42,7 +42,7 @@ export default async function PhraseSlugPage({ params }: Props) {
   return (
     <main className="min-h-screen p-4 sm:p-8 max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-8">
-        <Link href={`/${locale}/phrase`} className="text-sm text-gray-500 hover:underline">{t('backToCategories')}</Link>
+        <Link href={`/${locale}/phrase`} className="text-sm text-gray-500 hover:opacity-70">{t('backToCategories')}</Link>
       </div>
 
       <div className="mb-8">

@@ -19,7 +19,7 @@ export default async function Home({ params }: Props) {
 
   return (
     <main className="relative min-h-screen flex flex-col items-center justify-start px-8 pt-10 overflow-hidden">
-      <div className="fixed inset-0 bg-[url('/hero.jpg')] bg-cover bg-center opacity-10 pointer-events-none -z-10" />
+      <div className="fixed inset-0 bg-[url('/hero.jpg')] bg-cover bg-center opacity-20 pointer-events-none -z-10" />
 
       <Image src="/biyoleta.svg" alt="Biyoleta" width={200} height={59} priority unoptimized className="mb-4 animate-drop-bounce" />
       <p className="mb-1 text-lg font-semibold" style={{ color: '#512376' }}>{t('subtitle')}</p>
@@ -68,6 +68,22 @@ export default async function Home({ params }: Props) {
           </Link>
         ))}
       </div>
+
+      <Link
+        href={`/${locale}/what-is-bisaya`}
+        className="mt-8 flex items-center gap-3 hover:opacity-70"
+      >
+        <Image src="/openmoji/1F914.svg" alt="thinking" width={44} height={44} unoptimized />
+        <div className="relative ml-1">
+          {/* speech bubble tail (border layer) */}
+          <div className="absolute -left-[9px] top-1/2 -translate-y-1/2" style={{ width: 0, height: 0, borderTop: '8px solid transparent', borderBottom: '8px solid transparent', borderRight: '9px solid #e5e7eb' }} />
+          {/* speech bubble tail (fill layer) */}
+          <div className="absolute -left-[7px] top-1/2 -translate-y-1/2" style={{ width: 0, height: 0, borderTop: '7px solid transparent', borderBottom: '7px solid transparent', borderRight: '8px solid white' }} />
+          <div className="bg-white border border-gray-200 rounded-2xl px-4 py-2 text-sm font-medium shadow-sm" style={{ color: '#7a3aad' }}>
+            {t('whatIsBisaya')}
+          </div>
+        </div>
+      </Link>
     </main>
   )
 }

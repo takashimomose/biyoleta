@@ -58,7 +58,7 @@ export default async function TranslatePage({ params, searchParams }: Props) {
   return (
     <main className="min-h-screen p-4 sm:p-8 max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-8">
-        <Link href={`/${locale}`} className="text-sm text-gray-500 hover:underline">{t('back')}</Link>
+        <Link href={`/${locale}`} className="text-sm text-gray-500 hover:opacity-70">{t('back')}</Link>
       </div>
       <h1 className="text-2xl font-bold mb-2">{t('title')}</h1>
       <p className="text-gray-500 text-sm mb-8">{t('subtitle')}</p>
@@ -90,7 +90,7 @@ export default async function TranslatePage({ params, searchParams }: Props) {
               <ul className="space-y-3">
                 {wordResults.map((w) => (
                   <li key={w.id} className="border border-gray-200 rounded-xl p-4">
-                    <Link href={`/${locale}/dictionary/${w.word}`} className="hover:underline">
+                    <Link href={`/${locale}/dictionary/${w.word}`} className="hover:opacity-70">
                       <p className="text-xl font-bold mb-1">{w.word}</p>
                     </Link>
                     {w.part_of_speech && (

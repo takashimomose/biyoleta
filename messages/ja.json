@@ -20,7 +20,8 @@
     "translate": "翻訳検索",
     "browse": "カテゴリ",
     "quiz": "クイズ",
-    "flashcards": "フラッシュカード"
+    "flashcards": "フラッシュカード",
+    "whatIsBisaya": "ビサヤ語（セブアノ語）とは？"
   },
   "words": {
     "title": "単語一覧",
@@ -69,6 +70,7 @@
     "good": "よくできました！",
     "keep": "もっと練習しましょう！",
     "retry": "もう一度",
+    "back": "← トップ",
     "backHome": "← トップ",
     "notEnoughWords": "クイズを始めるのに十分な単語がありません。"
   },

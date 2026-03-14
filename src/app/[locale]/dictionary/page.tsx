@@ -49,7 +49,7 @@ export default async function DictionaryPage({ params, searchParams }: Props) {
   return (
     <main className="min-h-screen p-4 sm:p-8 max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-8">
-        <Link href={`/${locale}`} className="text-sm text-gray-500 hover:underline">{t('back')}</Link>
+        <Link href={`/${locale}`} className="text-sm text-gray-500 hover:opacity-70">{t('back')}</Link>
       </div>
       <div className="flex items-baseline justify-between mb-6">
         <h1 className="text-2xl font-bold">{t('title')}</h1>
@@ -62,7 +62,7 @@ export default async function DictionaryPage({ params, searchParams }: Props) {
           <Link
             key={letter}
             href={`/${locale}/dictionary/${letter}`}
-            className="w-8 h-8 flex items-center justify-center text-sm font-medium rounded border border-gray-200 hover:bg-gray-50 uppercase transition-colors"
+            className="w-8 h-8 flex items-center justify-center text-sm font-medium rounded border border-gray-200 hover:bg-purple-50 uppercase transition-colors"
             style={{ color: '#512376' }}
           >
             {letter}
@@ -78,7 +78,7 @@ export default async function DictionaryPage({ params, searchParams }: Props) {
             <li key={word.id}>
               <Link
                 href={`/${locale}/dictionary/${word.word}`}
-                className="flex items-center justify-between py-3 hover:bg-gray-50 px-2 rounded transition-colors gap-4"
+                className="flex items-center justify-between py-3 hover:bg-purple-50 px-2 rounded transition-colors gap-4"
               >
                 <span className="font-medium text-lg shrink-0">{word.word}</span>
                 <span className="text-sm text-gray-400 text-right truncate">{meaning ?? word.part_of_speech}</span>

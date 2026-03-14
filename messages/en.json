@@ -20,7 +20,8 @@
     "translate": "Translate",
     "browse": "Category",
     "quiz": "Quiz",
-    "flashcards": "Flashcards"
+    "flashcards": "Flashcards",
+    "whatIsBisaya": "What is Bisaya / Cebuano?"
   },
   "words": {
     "title": "Word List",
@@ -69,6 +70,7 @@
     "good": "Good job!",
     "keep": "Keep practicing!",
     "retry": "Try Again",
+    "back": "← Home",
     "backHome": "← Home",
     "notEnoughWords": "Not enough words in the database to start a quiz."
   },

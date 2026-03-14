@@ -60,7 +60,7 @@ export default async function CategoryPage({ params }: Props) {
   return (
     <main className="min-h-screen p-4 sm:p-8 max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-8">
-        <Link href={`/${locale}`} className="text-sm text-gray-500 hover:underline">{t('back')}</Link>
+        <Link href={`/${locale}`} className="text-sm text-gray-500 hover:opacity-70">{t('back')}</Link>
       </div>
       <h1 className="text-2xl font-bold mb-10">{t('title')}</h1>
 

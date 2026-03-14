@@ -20,7 +20,7 @@ export default async function EnglishToBisayaPage({ params }: Props) {
   return (
     <main className="min-h-screen p-4 sm:p-8 max-w-2xl mx-auto">
       <div className="mb-8">
-        <Link href={`/${locale}`} className="text-sm text-gray-500 hover:underline">← Home</Link>
+        <Link href={`/${locale}`} className="text-sm text-gray-500 hover:opacity-70">← Home</Link>
       </div>
 
       <h1 className="text-3xl font-bold mb-2">English to Bisaya Dictionary</h1>
@@ -46,7 +46,7 @@ export default async function EnglishToBisayaPage({ params }: Props) {
             <li key={word.id}>
               <Link
                 href={`/${locale}/dictionary/${word.word}`}
-                className="flex items-center justify-between py-3 hover:bg-gray-50 px-2 rounded transition-colors"
+                className="flex items-center justify-between py-3 hover:bg-purple-50 px-2 rounded transition-colors"
               >
                 <span className="font-medium">{word.word}</span>
                 <span className="text-sm text-gray-400">{word.part_of_speech}</span>
@@ -55,7 +55,7 @@ export default async function EnglishToBisayaPage({ params }: Props) {
           ))}
         </ul>
         <div className="mt-4">
-          <Link href={`/${locale}/dictionary`} className="text-sm text-gray-500 hover:underline">
+          <Link href={`/${locale}/dictionary`} className="text-sm text-gray-500 hover:opacity-70">
             Browse all words →
           </Link>
         </div>
@@ -68,7 +68,7 @@ export default async function EnglishToBisayaPage({ params }: Props) {
             <Link
               key={letter}
               href={`/${locale}/dictionary/${letter}`}
-              className="w-8 h-8 flex items-center justify-center text-sm font-medium rounded border border-gray-200 hover:bg-gray-50 uppercase transition-colors"
+              className="w-8 h-8 flex items-center justify-center text-sm font-medium rounded border border-gray-200 hover:bg-purple-50 uppercase transition-colors"
               style={{ color: '#512376' }}
             >
               {letter}

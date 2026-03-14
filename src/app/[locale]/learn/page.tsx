@@ -23,7 +23,7 @@ export default async function LearnPage({ params }: Props) {
   return (
     <main className="min-h-screen p-4 sm:p-8 max-w-2xl mx-auto">
       <div className="mb-8">
-        <Link href={`/${locale}`} className="text-sm text-gray-500 hover:underline">← Home</Link>
+        <Link href={`/${locale}`} className="text-sm text-gray-500 hover:opacity-70">← Home</Link>
       </div>
       <h1 className="text-3xl font-bold mb-2">Learn Bisaya</h1>
       <p className="text-gray-500 text-sm mb-8">
