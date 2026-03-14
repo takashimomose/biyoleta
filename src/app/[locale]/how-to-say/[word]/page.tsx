@@ -8,7 +8,9 @@ type Props = { params: Promise<{ locale: string; word: string }> }
 export async function generateStaticParams() {
   const [enSlugs, jaSlugs] = await Promise.all([getAllEnglishSlugs(), getAllJapaneseSlugs()])
   return [
-    ...enSlugs.map((word) => ({ locale: 'en', word })),
+    // EN: /how-to-say/love-in-bisaya
+    ...enSlugs.map((word) => ({ locale: 'en', word: `${word}-in-bisaya` })),
+    // JA: /how-to-say/愛
     ...jaSlugs.map((word) => ({ locale: 'ja', word })),
   ]
 }
@@ -16,7 +18,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props) {
   const { locale, word: slug } = await params
   const isJa = locale === 'ja'
-  const label = isJa ? slug : slug.replace(/-/g, ' ')
+  const label = isJa ? slug : slug.replace(/-in-bisaya$/, '').replace(/-/g, ' ')
 
   if (isJa) {
     return {
@@ -36,17 +38,22 @@ export default async function HowToSayPage({ params }: Props) {
   const { locale, word: slug } = await params
   const t = await getTranslations('howToSay')
   const isJa = locale === 'ja'
-  const label = isJa ? slug : slug.replace(/-/g, ' ')
+
+  // EN slugs have "-in-bisaya" suffix; strip it to get the keyword
+  const keyword = isJa ? slug : slug.replace(/-in-bisaya$/, '')
+  const label = isJa ? keyword : keyword.replace(/-/g, ' ')
 
   const results = isJa
-    ? await getResultsByJapanese(slug)
-    : await getResultsByEnglish(slug)
+    ? await getResultsByJapanese(keyword)
+    : await getResultsByEnglish(keyword)
 
   if (results.length === 0) notFound()
 
   const answerText = results
     .map((r) => `${r.word} (${isJa ? r.meaning_ja : r.meaning_en})`)
     .join(', ')
+
+  const canonicalSlug = isJa ? slug : `${keyword}-in-bisaya`
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -60,7 +67,7 @@ export default async function HowToSayPage({ params }: Props) {
       acceptedAnswer: {
         '@type': 'Answer',
         text: answerText,
-        url: `https://biyoleta.com/${locale}/how-to-say/${slug}`,
+        url: `https://biyoleta.com/${locale}/how-to-say/${canonicalSlug}`,
       },
     },
   }
@@ -75,7 +82,6 @@ export default async function HowToSayPage({ params }: Props) {
         <Link href={`/${locale}`} className="text-sm text-gray-500 hover:underline">{t('back')}</Link>
       </div>
 
-      {/* H1 matches exact search query */}
       <h1 className="text-3xl font-bold mb-1">{t('heading', { word: label })}</h1>
       <p className="text-gray-400 text-sm mb-8">Bisaya (Cebuano)</p>
 
@@ -87,7 +93,7 @@ export default async function HowToSayPage({ params }: Props) {
             <div className="flex items-start justify-between gap-4">
               <p className="text-5xl font-bold tracking-wide">{r.word}</p>
               <Link
-                href={`/${locale}/words/${r.word}`}
+                href={`/${locale}/dictionary/${r.word}`}
                 className="text-sm text-gray-400 hover:underline whitespace-nowrap mt-2"
               >
                 {t('seeMore')}
@@ -127,16 +133,18 @@ export default async function HowToSayPage({ params }: Props) {
       <div className="border-t border-gray-100 pt-6">
         <p className="text-xs text-gray-400 mb-3 uppercase tracking-wide">{t('alsoSee')}</p>
         <div className="flex flex-wrap gap-2">
-          <Link
-            href={`/${locale}/in-bisaya/${slug}`}
-            className="text-sm text-gray-500 hover:underline border border-gray-200 rounded-full px-3 py-1"
-          >
-            {isJa ? `ビサヤ語で${label}` : `${label} in Bisaya`}
-          </Link>
+          {locale === 'en' && (
+            <Link
+              href={`/in-bisaya/${keyword}`}
+              className="text-sm text-gray-500 hover:underline border border-gray-200 rounded-full px-3 py-1"
+            >
+              {label} in Bisaya
+            </Link>
+          )}
           {results.map((r, i) => (
             <Link
               key={i}
-              href={`/${locale}/words/${r.word}`}
+              href={`/${locale}/dictionary/${r.word}`}
               className="text-sm text-gray-500 hover:underline border border-gray-200 rounded-full px-3 py-1"
             >
               {r.word}

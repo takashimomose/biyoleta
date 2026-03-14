@@ -9,8 +9,8 @@ export async function GET() {
 
   return buildSitemap(
     (words ?? []).flatMap((w) => [
-      { loc: `${BASE_URL}/en/words/${w.word}`, lastmod: w.created_at, changefreq: 'monthly', priority: 0.8 },
-      { loc: `${BASE_URL}/ja/words/${w.word}`, lastmod: w.created_at, changefreq: 'monthly', priority: 0.8 },
+      { loc: `${BASE_URL}/en/dictionary/${w.word}`, lastmod: w.created_at, changefreq: 'monthly', priority: 0.8 },
+      { loc: `${BASE_URL}/ja/dictionary/${w.word}`, lastmod: w.created_at, changefreq: 'monthly', priority: 0.8 },
     ])
   )
 }

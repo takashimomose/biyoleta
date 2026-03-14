@@ -58,7 +58,7 @@ export default async function SearchPage({ params, searchParams }: Props) {
               {words.map((word: Word) => (
                 <li key={word.id}>
                   <Link
-                    href={`/${locale}/words/${word.word}`}
+                    href={`/${locale}/dictionary/${word.word}`}
                     className="flex items-center justify-between py-3 hover:bg-gray-50 px-2 rounded transition-colors"
                   >
                     <span className="font-medium text-lg">{word.word}</span>

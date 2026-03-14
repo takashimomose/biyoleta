@@ -7,11 +7,11 @@ export async function GET() {
     .select('id')
 
   return buildSitemap([
-    { loc: `${BASE_URL}/en/phrases`, changefreq: 'weekly', priority: 0.8 },
-    { loc: `${BASE_URL}/ja/phrases`, changefreq: 'weekly', priority: 0.8 },
+    { loc: `${BASE_URL}/en/phrase`, changefreq: 'weekly', priority: 0.8 },
+    { loc: `${BASE_URL}/ja/phrase`, changefreq: 'weekly', priority: 0.8 },
     ...(phrases ?? []).flatMap((p) => [
-      { loc: `${BASE_URL}/en/phrases/${p.id}`, changefreq: 'monthly', priority: 0.7 },
-      { loc: `${BASE_URL}/ja/phrases/${p.id}`, changefreq: 'monthly', priority: 0.7 },
+      { loc: `${BASE_URL}/en/phrase/${p.id}`, changefreq: 'monthly', priority: 0.7 },
+      { loc: `${BASE_URL}/ja/phrase/${p.id}`, changefreq: 'monthly', priority: 0.7 },
     ]),
   ])
 }

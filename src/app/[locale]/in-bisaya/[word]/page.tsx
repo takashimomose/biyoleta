@@ -72,7 +72,7 @@ export default async function InBisayaPage({ params }: Props) {
                 )}
               </div>
               <Link
-                href={`/${locale}/words/${r.word}`}
+                href={`/${locale}/dictionary/${r.word}`}
                 className="text-sm text-gray-500 hover:underline whitespace-nowrap mt-1"
               >
                 {t('seeMore')}

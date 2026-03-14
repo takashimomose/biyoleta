@@ -45,10 +45,10 @@ export default async function Home({ params }: Props) {
 
       <div className="grid grid-cols-3 gap-4 w-full max-w-md items-stretch">
         {[
-          { href: `/${locale}/words`,      label: t('browseWords'),   icon: '1F4D6' },
-          { href: `/${locale}/phrases`,    label: t('browsePhrases'), icon: '1F4AC' },
+          { href: `/${locale}/dictionary`, label: t('browseWords'),   icon: '1F4D6' },
+          { href: `/${locale}/phrase`,     label: t('browsePhrases'), icon: '1F4AC' },
           { href: `/${locale}/translate`,  label: t('translate'),     icon: '1F504' },
-          { href: `/${locale}/categories`, label: t('browse'),        icon: '1F5C2' },
+          { href: `/${locale}/category`,   label: t('browse'),        icon: '1F5C2' },
           { href: `/${locale}/quiz`,       label: t('quiz'),          icon: '270F'  },
         ].map(({ href, label, icon }) => (
           <Link

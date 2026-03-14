@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 type Props = { params: Promise<{ locale: string }> }
 
-export default async function PhrasesPage({ params }: Props) {
+export default async function PhrasePage({ params }: Props) {
   const { locale } = await params
   const t = await getTranslations('phrases')
   const isJa = locale === 'ja'
@@ -37,7 +37,7 @@ export default async function PhrasesPage({ params }: Props) {
           return (
             <Link
               key={key}
-              href={`/${locale}/phrases/${key}`}
+              href={`/${locale}/phrase/${key}`}
               className="card-3d flex items-center gap-3 p-4"
             >
               <Image src={`/openmoji/${icon}.svg`} alt={key} width={32} height={32} unoptimized />

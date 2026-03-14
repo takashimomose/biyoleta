@@ -9,7 +9,7 @@ export async function GET() {
 
   return buildSitemap([
     ...enSlugs.map((slug) => ({
-      loc: `${BASE_URL}/en/how-to-say/${slug}`,
+      loc: `${BASE_URL}/en/how-to-say/${slug}-in-bisaya`,
       changefreq: 'monthly',
       priority: 0.9,
     })),

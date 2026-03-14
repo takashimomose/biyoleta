@@ -90,7 +90,7 @@ export default async function TranslatePage({ params, searchParams }: Props) {
               <ul className="space-y-3">
                 {wordResults.map((w) => (
                   <li key={w.id} className="border border-gray-200 rounded-xl p-4">
-                    <Link href={`/${locale}/words/${w.word}`} className="hover:underline">
+                    <Link href={`/${locale}/dictionary/${w.word}`} className="hover:underline">
                       <p className="text-xl font-bold mb-1">{w.word}</p>
                     </Link>
                     {w.part_of_speech && (

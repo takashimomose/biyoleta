@@ -15,15 +15,15 @@ export async function GET() {
   }
 
   return buildSitemap([
-    { loc: `${BASE_URL}/en/categories`, changefreq: 'weekly', priority: 0.8 },
-    { loc: `${BASE_URL}/ja/categories`, changefreq: 'weekly', priority: 0.8 },
+    { loc: `${BASE_URL}/en/category`, changefreq: 'weekly', priority: 0.8 },
+    { loc: `${BASE_URL}/ja/category`, changefreq: 'weekly', priority: 0.8 },
     ...[...categories].flatMap((cat) => [
-      { loc: `${BASE_URL}/en/categories/category-${cat}`, changefreq: 'weekly', priority: 0.8 },
-      { loc: `${BASE_URL}/ja/categories/category-${cat}`, changefreq: 'weekly', priority: 0.8 },
+      { loc: `${BASE_URL}/en/category/category-${cat}`, changefreq: 'weekly', priority: 0.8 },
+      { loc: `${BASE_URL}/ja/category/category-${cat}`, changefreq: 'weekly', priority: 0.8 },
     ]),
     ...[...partsOfSpeech].flatMap((pos) => [
-      { loc: `${BASE_URL}/en/categories/pos-${pos}`, changefreq: 'weekly', priority: 0.7 },
-      { loc: `${BASE_URL}/ja/categories/pos-${pos}`, changefreq: 'weekly', priority: 0.7 },
+      { loc: `${BASE_URL}/en/category/pos-${pos}`, changefreq: 'weekly', priority: 0.7 },
+      { loc: `${BASE_URL}/ja/category/pos-${pos}`, changefreq: 'weekly', priority: 0.7 },
     ]),
   ])
 }

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { PHRASE_CATEGORIES } from '@/lib/phrase-categories'
 
-type Props = { params: Promise<{ locale: string; category: string }> }
+type Props = { params: Promise<{ locale: string; slug: string }> }
 
 type Phrase = {
   id: number
@@ -16,23 +16,23 @@ type Phrase = {
 
 export async function generateStaticParams() {
   return PHRASE_CATEGORIES.flatMap(({ key }) => [
-    { locale: 'en', category: key },
-    { locale: 'ja', category: key },
+    { locale: 'en', slug: key },
+    { locale: 'ja', slug: key },
   ])
 }
 
-export default async function PhraseCategoryPage({ params }: Props) {
-  const { locale, category } = await params
+export default async function PhraseSlugPage({ params }: Props) {
+  const { locale, slug } = await params
   const t = await getTranslations('phrases')
   const isJa = locale === 'ja'
 
-  const cat = PHRASE_CATEGORIES.find((c) => c.key === category)
+  const cat = PHRASE_CATEGORIES.find((c) => c.key === slug)
   if (!cat) notFound()
 
   const { data: phrases, error } = await supabase
     .from('phrases')
     .select('*')
-    .eq('category', category)
+    .eq('category', slug)
     .order('id', { ascending: true })
 
   if (error) return <p className="p-8 text-red-500">Error: {error.message}</p>
@@ -42,7 +42,7 @@ export default async function PhraseCategoryPage({ params }: Props) {
   return (
     <main className="min-h-screen p-4 sm:p-8 max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-8">
-        <Link href={`/${locale}/phrases`} className="text-sm text-gray-500 hover:underline">{t('backToCategories')}</Link>
+        <Link href={`/${locale}/phrase`} className="text-sm text-gray-500 hover:underline">{t('backToCategories')}</Link>
       </div>
 
       <div className="mb-8">
