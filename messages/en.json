@@ -15,10 +15,10 @@
     "description": "Bisaya / Cebuano Dictionary & Learning",
     "placeholder": "Search for a word",
     "search": "Search",
-    "browseWords": "Words",
+    "browseWords": "Dictionary",
     "browsePhrases": "Phrases",
     "translate": "Translate",
-    "browse": "Categories",
+    "browse": "Category",
     "quiz": "Quiz"
   },
   "words": {
