@@ -67,8 +67,10 @@ body {
 .card-3d:focus-visible {
   box-shadow: 0 0px 0 #512376;
   transform: translateY(5px);
+  background: #f5f0ff;
   outline: none;
 }
+
 
 .card-3d:active {
   box-shadow: 0 0px 0 #512376;
