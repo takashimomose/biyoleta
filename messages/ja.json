@@ -15,11 +15,12 @@
     "description": "ビサヤ語 / セブアノ語 辞書＆学習",
     "placeholder": "単語を入力してください",
     "search": "検索",
-    "browseWords": "単語",
+    "browseWords": "辞書",
     "browsePhrases": "フレーズ",
     "translate": "翻訳検索",
     "browse": "カテゴリ",
-    "quiz": "クイズ"
+    "quiz": "クイズ",
+    "flashcards": "フラッシュカード"
   },
   "words": {
     "title": "単語一覧",
@@ -104,6 +105,26 @@
   "category": {
     "backToCategories": "← カテゴリ一覧",
     "words": "{count}語"
+  },
+  "flashcards": {
+    "title": "フラッシュカード",
+    "subtitle": "ビサヤ語の語彙を練習",
+    "back": "← トップ",
+    "modeLabel": "モードを選択",
+    "modeBisayaToEn": "ビサヤ語 → 日本語",
+    "modeEnToBisaya": "日本語 → ビサヤ語",
+    "start": "スタート",
+    "tapToFlip": "タップして裏返す",
+    "know": "わかった",
+    "dontKnow": "わからない",
+    "card": "{current} / {total}",
+    "result": "結果",
+    "known": "わかった",
+    "unknown": "わからない",
+    "retry": "もう一度",
+    "retryUnknown": "わからないものを復習",
+    "backHome": "← トップ",
+    "notEnoughWords": "単語が足りません。"
   },
   "translate": {
     "title": "翻訳検索",

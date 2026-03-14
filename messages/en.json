@@ -19,7 +19,8 @@
     "browsePhrases": "Phrases",
     "translate": "Translate",
     "browse": "Category",
-    "quiz": "Quiz"
+    "quiz": "Quiz",
+    "flashcards": "Flashcards"
   },
   "words": {
     "title": "Word List",
@@ -104,6 +105,26 @@
   "category": {
     "backToCategories": "← Browse",
     "words": "{count} words"
+  },
+  "flashcards": {
+    "title": "Flashcards",
+    "subtitle": "Practice Bisaya vocabulary",
+    "back": "← Home",
+    "modeLabel": "Choose a mode",
+    "modeBisayaToEn": "Bisaya → English",
+    "modeEnToBisaya": "English → Bisaya",
+    "start": "Start",
+    "tapToFlip": "Tap to flip",
+    "know": "Know it",
+    "dontKnow": "Don't know",
+    "card": "Card {current} / {total}",
+    "result": "Result",
+    "known": "Known",
+    "unknown": "Unknown",
+    "retry": "Try Again",
+    "retryUnknown": "Retry unknowns",
+    "backHome": "← Home",
+    "notEnoughWords": "Not enough words to start."
   },
   "translate": {
     "title": "Translate",

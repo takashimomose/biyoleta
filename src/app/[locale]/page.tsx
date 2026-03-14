@@ -48,8 +48,9 @@ export default async function Home({ params }: Props) {
           { href: `/${locale}/dictionary`, label: t('browseWords'),   icon: '1F4D6' },
           { href: `/${locale}/phrase`,     label: t('browsePhrases'), icon: '1F4AC' },
           { href: `/${locale}/translate`,  label: t('translate'),     icon: '1F504' },
-          { href: `/${locale}/category`,   label: t('browse'),        icon: '1F5C2' },
-          { href: `/${locale}/quiz`,       label: t('quiz'),          icon: '270F'  },
+          { href: `/${locale}/category`,    label: t('browse'),      icon: '1F5C2' },
+          { href: `/${locale}/quiz`,        label: t('quiz'),        icon: '270F'  },
+          { href: `/${locale}/flashcards`,  label: t('flashcards'),  icon: '1F4DD' },
         ].map(({ href, label, icon }) => (
           <Link
             key={href}

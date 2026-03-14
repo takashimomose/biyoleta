@@ -1,6 +1,5 @@
 import { supabase } from '@/lib/supabase'
 import { getTranslations } from 'next-intl/server'
-import { Word } from '@/lib/types'
 import Link from 'next/link'
 import Pagination from '@/components/Pagination'
 
@@ -20,6 +19,8 @@ export default async function DictionaryPage({ params, searchParams }: Props) {
   const from = (page - 1) * PER_PAGE
   const to = from + PER_PAGE - 1
 
+  const isJa = locale === 'ja'
+
   const { data: words, error, count } = await supabase
     .from('words')
     .select('*', { count: 'exact' })
@@ -27,6 +28,19 @@ export default async function DictionaryPage({ params, searchParams }: Props) {
     .range(from, to)
 
   if (error) return <p className="p-8 text-red-500">Error: {error.message}</p>
+
+  const wordIds = (words ?? []).map((w) => w.id)
+  const { data: meanings } = wordIds.length > 0
+    ? await supabase
+        .from('meanings')
+        .select('word_id, meaning_en, meaning_ja')
+        .in('word_id', wordIds)
+    : { data: [] }
+
+  const meaningMap = new Map<number, { meaning_en: string | null; meaning_ja: string | null }>()
+  for (const m of meanings ?? []) {
+    if (!meaningMap.has(m.word_id)) meaningMap.set(m.word_id, m)
+  }
 
   const totalPages = Math.ceil((count ?? 0) / PER_PAGE)
 
@@ -57,17 +71,21 @@ export default async function DictionaryPage({ params, searchParams }: Props) {
       </div>
 
       <ul className="divide-y divide-gray-200">
-        {words?.map((word: Word) => (
-          <li key={word.id}>
-            <Link
-              href={`/${locale}/dictionary/${word.word}`}
-              className="flex items-center justify-between py-3 hover:bg-gray-50 px-2 rounded transition-colors"
-            >
-              <span className="font-medium text-lg">{word.word}</span>
-              <span className="text-sm text-gray-400">{word.part_of_speech}</span>
-            </Link>
-          </li>
-        ))}
+        {words?.map((word: any) => {
+          const m = meaningMap.get(word.id)
+          const meaning = isJa ? m?.meaning_ja : m?.meaning_en
+          return (
+            <li key={word.id}>
+              <Link
+                href={`/${locale}/dictionary/${word.word}`}
+                className="flex items-center justify-between py-3 hover:bg-gray-50 px-2 rounded transition-colors gap-4"
+              >
+                <span className="font-medium text-lg shrink-0">{word.word}</span>
+                <span className="text-sm text-gray-400 text-right truncate">{meaning ?? word.part_of_speech}</span>
+              </Link>
+            </li>
+          )
+        })}
       </ul>
 
       <Pagination
