@@ -3,6 +3,7 @@ import { getTranslations } from 'next-intl/server'
 import { Word } from '@/lib/types'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { WORD_CATEGORY_GROUPS } from '@/lib/word-categories'
 
 type Props = { params: Promise<{ locale: string; slug: string }> }
 
@@ -35,7 +36,24 @@ export default async function CategorySlugPage({ params }: Props) {
 
   if (!words || words.length === 0) notFound()
 
-  const label = value.replace(/_/g, ' ')
+  const wordIds = words.map((w: Word) => w.id)
+  const { data: meanings } = await supabase
+    .from('meanings')
+    .select('word_id, meaning_en')
+    .in('word_id', wordIds)
+
+  const meaningMap = new Map<number, string>()
+  for (const m of meanings ?? []) {
+    if (!meaningMap.has(m.word_id) && m.meaning_en) meaningMap.set(m.word_id, m.meaning_en)
+  }
+
+  const isJa = locale === 'ja'
+  const subCat = !isPos
+    ? WORD_CATEGORY_GROUPS.flatMap(g => g.subCategories).find(s => s.key === value)
+    : null
+  const label = subCat
+    ? (isJa ? subCat.ja : subCat.en)
+    : value.replace(/_/g, ' ')
 
   return (
     <main className="min-h-screen p-8 max-w-2xl mx-auto">
@@ -55,11 +73,18 @@ export default async function CategorySlugPage({ params }: Props) {
         {words.map((word: Word) => (
           <li key={word.id}>
             <Link
-              href={`/${locale}/dictionary/${word.word}`}
-              className="flex items-center justify-between py-3 hover:bg-purple-50 px-2 rounded transition-colors"
+              href={`/${locale}/word/${word.word}`}
+              className="flex flex-col py-3 hover:bg-purple-50 px-2 rounded transition-colors gap-0.5"
             >
-              <span className="font-medium text-lg">{word.word}</span>
-              <span className="text-sm text-gray-400">{isPos ? word.category : word.part_of_speech}</span>
+              <div className="flex items-center gap-2">
+                <span className="font-medium text-lg">{word.word}</span>
+                {word.part_of_speech && (
+                  <span className="text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded">{word.part_of_speech}</span>
+                )}
+              </div>
+              {meaningMap.get(word.id) && (
+                <span className="text-sm text-gray-400 truncate">{meaningMap.get(word.id)}</span>
+              )}
             </Link>
           </li>
         ))}

@@ -21,7 +21,16 @@ export default async function SearchPage({ params, searchParams }: Props) {
       .select('*')
       .ilike('word', `%${query}%`)
       .order('word')
-    words = data ?? []
+    const q = query.toLowerCase()
+    words = (data ?? []).sort((a, b) => {
+      const rank = (w: string) => {
+        const s = w.toLowerCase()
+        if (s === q) return 0
+        if (s.startsWith(q)) return 1
+        return 2
+      }
+      return rank(a.word) - rank(b.word)
+    })
   }
 
   return (
@@ -31,7 +40,7 @@ export default async function SearchPage({ params, searchParams }: Props) {
       </div>
       <h1 className="text-2xl font-bold mb-6">{t('title')}</h1>
 
-      <form action={`/${locale}/search`} method="GET" className="mb-8">
+      <form action={`/${locale}/search`} method="GET" className="w-full max-w-md mx-auto mb-8">
         <div className="flex flex-col gap-2">
           <input
             type="text"
@@ -42,7 +51,7 @@ export default async function SearchPage({ params, searchParams }: Props) {
             className="w-full rounded-full px-5 py-3 text-sm focus:outline-none focus:ring-2 text-gray-800 placeholder-gray-400 border border-gray-200 focus:ring-[#512376]/50"
             style={{ backgroundColor: 'rgba(255,255,255,1)' }}
           />
-          <button type="submit" className="btn-3d px-5 py-3 w-1/2 sm:w-1/3 mx-auto">
+          <button type="submit" className="btn-3d px-5 py-3 w-1/3 mx-auto">
             {t('button')}
           </button>
         </div>
@@ -58,7 +67,7 @@ export default async function SearchPage({ params, searchParams }: Props) {
               {words.map((word: Word) => (
                 <li key={word.id}>
                   <Link
-                    href={`/${locale}/dictionary/${word.word}`}
+                    href={`/${locale}/word/${word.word}`}
                     className="flex items-center justify-between py-3 hover:bg-purple-50 px-2 rounded transition-colors"
                   >
                     <span className="font-medium text-lg">{word.word}</span>

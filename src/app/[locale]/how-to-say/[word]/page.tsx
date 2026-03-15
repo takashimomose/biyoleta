@@ -93,7 +93,7 @@ export default async function HowToSayPage({ params }: Props) {
             <div className="flex items-start justify-between gap-4">
               <p className="text-5xl font-bold tracking-wide">{r.word}</p>
               <Link
-                href={`/${locale}/dictionary/${r.word}`}
+                href={`/${locale}/word/${r.word}`}
                 className="text-sm text-gray-400 hover:opacity-70 whitespace-nowrap mt-2"
               >
                 {t('seeMore')}
@@ -135,7 +135,7 @@ export default async function HowToSayPage({ params }: Props) {
         <div className="flex flex-wrap gap-2">
           {locale === 'en' && (
             <Link
-              href={`/in-bisaya/${keyword}`}
+              href={`/${locale}/english-to-bisaya?q=${encodeURIComponent(label)}`}
               className="text-sm text-gray-500 hover:opacity-70 border border-gray-200 rounded-full px-3 py-1"
             >
               {label} in Bisaya
@@ -144,7 +144,7 @@ export default async function HowToSayPage({ params }: Props) {
           {results.map((r, i) => (
             <Link
               key={i}
-              href={`/${locale}/dictionary/${r.word}`}
+              href={`/${locale}/word/${r.word}`}
               className="text-sm text-gray-500 hover:opacity-70 border border-gray-200 rounded-full px-3 py-1"
             >
               {r.word}

@@ -29,13 +29,22 @@ export default async function PhraseSlugPage({ params }: Props) {
   const cat = PHRASE_CATEGORIES.find((c) => c.key === slug)
   if (!cat) notFound()
 
-  const { data: phrases, error } = await supabase
-    .from('phrases')
-    .select('*')
-    .eq('category', slug)
-    .order('id', { ascending: true })
-
-  if (error) return <p className="p-8 text-red-500">Error: {error.message}</p>
+  const phrases: Phrase[] = []
+  const PAGE_SIZE = 1000
+  let page = 0
+  while (true) {
+    const { data, error } = await supabase
+      .from('phrases')
+      .select('*')
+      .eq('category', slug)
+      .order('id', { ascending: true })
+      .range(page * PAGE_SIZE, (page + 1) * PAGE_SIZE - 1)
+    if (error) return <p className="p-8 text-red-500">Error: {error.message}</p>
+    if (!data || data.length === 0) break
+    phrases.push(...data)
+    if (data.length < PAGE_SIZE) break
+    page++
+  }
 
   const label = isJa ? cat.ja : cat.en
 

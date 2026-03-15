@@ -70,7 +70,7 @@ export default async function BisayaJaPage({ params }: Props) {
                 )}
               </div>
               <Link
-                href={`/${locale}/dictionary/${r.word}`}
+                href={`/${locale}/word/${r.word}`}
                 className="text-sm text-gray-500 hover:opacity-70 whitespace-nowrap mt-1"
               >
                 {t('seeMore')}

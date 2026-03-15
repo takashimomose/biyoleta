@@ -11,14 +11,15 @@ export default async function PhrasePage({ params }: Props) {
   const t = await getTranslations('phrases')
   const isJa = locale === 'ja'
 
-  const { data: phrases } = await supabase.from('phrases').select('category')
+  const { data: counts } = await supabase.rpc('get_phrase_category_counts')
 
   const countMap = new Map<string, number>()
-  for (const p of phrases ?? []) {
-    const cat = p.category ?? '__none__'
-    countMap.set(cat, (countMap.get(cat) ?? 0) + 1)
+  let total = 0
+  for (const row of counts ?? []) {
+    const c = Number(row.count)
+    countMap.set(row.category ?? '__none__', c)
+    total += c
   }
-  const total = phrases?.length ?? 0
 
   return (
     <main className="min-h-screen p-4 sm:p-8 max-w-2xl mx-auto">

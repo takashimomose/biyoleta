@@ -3,13 +3,6 @@
     "name": "Biyoleta | ここから広がるビサヤ語",
     "description": "ビサヤ語（セブアノ語）辞典。英語・日本語から単語・フレーズを検索できます。"
   },
-  "nav": {
-    "words": "単語",
-    "phrases": "フレーズ",
-    "translate": "翻訳",
-    "browse": "カテゴリ",
-    "quiz": "クイズ"
-  },
   "home": {
     "subtitle": "ここから広がるビサヤ語",
     "description": "ビサヤ語 / セブアノ語 辞書＆学習",
@@ -24,8 +17,13 @@
     "whatIsBisaya": "ビサヤ語（セブアノ語）とは？"
   },
   "words": {
-    "title": "単語一覧",
-    "back": "← トップ"
+    "title": "辞書",
+    "back": "← トップ",
+    "placeholder": "単語を入力...",
+    "search": "検索",
+    "englishToBisaya": "英語 → ビサヤ語",
+    "bisayaToEnglish": "ビサヤ語 → 英語",
+    "howToSay": "言い方を調べる"
   },
   "word": {
     "back": "← 単語一覧",
@@ -97,16 +95,16 @@
     "relatedSearches": "関連検索"
   },
   "categories": {
-    "title": "カテゴリ・品詞",
+    "title": "カテゴリ",
     "back": "← トップ",
     "byCategory": "カテゴリ別",
     "byPartOfSpeech": "品詞別",
     "uncategorized": "未分類",
-    "words": "{count}語"
+    "words": "{count} 語"
   },
   "category": {
     "backToCategories": "← カテゴリ一覧",
-    "words": "{count}語"
+    "words": "{count} 語"
   },
   "flashcards": {
     "title": "フラッシュカード",

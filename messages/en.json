@@ -3,13 +3,6 @@
     "name": "Biyoleta｜Where Bisaya Blooms",
     "description": "Bisaya (Cebuano) dictionary. Search words and phrases in English and Japanese."
   },
-  "nav": {
-    "words": "Words",
-    "phrases": "Phrases",
-    "translate": "Translate",
-    "browse": "Browse",
-    "quiz": "Quiz"
-  },
   "home": {
     "subtitle": "Where Bisaya Blooms",
     "description": "Bisaya / Cebuano Dictionary & Learning",
@@ -24,8 +17,13 @@
     "whatIsBisaya": "What is Bisaya / Cebuano?"
   },
   "words": {
-    "title": "Word List",
-    "back": "← Home"
+    "title": "Dictionary",
+    "back": "← Home",
+    "placeholder": "Search for a word...",
+    "search": "Search",
+    "englishToBisaya": "English → Bisaya",
+    "bisayaToEnglish": "Bisaya → English",
+    "howToSay": "How to Say"
   },
   "word": {
     "back": "← Word list",
@@ -97,7 +95,7 @@
     "relatedSearches": "Related searches"
   },
   "categories": {
-    "title": "Browse",
+    "title": "Categories",
     "back": "← Home",
     "byCategory": "By Category",
     "byPartOfSpeech": "By Part of Speech",
