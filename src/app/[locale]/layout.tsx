@@ -4,6 +4,8 @@ import { routing } from '@/i18n/routing'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import LocaleSwitcher from '@/components/LocaleSwitcher'
+import Link from 'next/link'
+import Image from 'next/image'
 
 type Props = {
   children: React.ReactNode
@@ -31,7 +33,10 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <NextIntlClientProvider messages={messages}>
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-end px-5 py-3 bg-white/80 backdrop-blur-sm border-b border-gray-100">
+      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 py-3 bg-white/80 backdrop-blur-sm border-b border-gray-100">
+        <Link href={`/${locale}`} aria-label="Top page">
+          <Image src="/logo.svg" alt="Biyoleta" width={28} height={35} priority />
+        </Link>
         <LocaleSwitcher />
       </header>
       <div className="pt-[52px] pb-[36px]">
