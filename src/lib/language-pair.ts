@@ -10,7 +10,7 @@ export type LanguagePairResult = {
 
 /** meaning_en の全エントリから個別キーワードを抽出してスラッグ化 */
 export async function getAllEnglishSlugs(): Promise<string[]> {
-  const { data } = await supabase.from('meanings').select('meaning_en')
+  const { data } = await supabase.from('meanings').select('meaning_en').limit(50000)
   const slugs = new Set<string>()
   for (const row of data ?? []) {
     for (const part of (row.meaning_en ?? '').split(',')) {
@@ -23,7 +23,7 @@ export async function getAllEnglishSlugs(): Promise<string[]> {
 
 /** meaning_ja の全エントリから個別キーワードを抽出してスラッグ化 */
 export async function getAllJapaneseSlugs(): Promise<string[]> {
-  const { data } = await supabase.from('meanings').select('meaning_ja')
+  const { data } = await supabase.from('meanings').select('meaning_ja').limit(50000)
   const slugs = new Set<string>()
   for (const row of data ?? []) {
     for (const part of (row.meaning_ja ?? '').split(/[、,，]/)) {

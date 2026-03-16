@@ -4,10 +4,12 @@ import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
+export const revalidate = 86400
+
 type Props = { params: Promise<{ locale: string; word: string }> }
 
 export async function generateStaticParams() {
-  const { data: words } = await supabase.from('words').select('word')
+  const { data: words } = await supabase.from('words').select('word').limit(50000)
   return (words ?? []).flatMap((w) => [
     { locale: 'en', word: w.word },
     { locale: 'ja', word: w.word },

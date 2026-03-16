@@ -3,6 +3,8 @@ import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
+export const revalidate = 86400
+
 type Props = { params: Promise<{ locale: string; word: string }> }
 
 export async function generateStaticParams() {
