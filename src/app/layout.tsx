@@ -27,6 +27,11 @@ export default function RootLayout({
         {children}
       </body>
       <GoogleAnalytics gaId="G-YL5FMY9GJM" />
+      <script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9686334303305885"
+        crossOrigin="anonymous"
+      />
     </html>
   );
 }
