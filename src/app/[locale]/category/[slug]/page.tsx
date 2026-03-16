@@ -42,6 +42,8 @@ export default async function CategorySlugPage({ params }: Props) {
     .select('word_id, meaning_en, meaning_ja')
     .in('word_id', wordIds)
 
+  const isJa = locale === 'ja'
+
   const meaningMap = new Map<number, string>()
   for (const m of meanings ?? []) {
     if (!meaningMap.has(m.word_id)) {
@@ -49,8 +51,6 @@ export default async function CategorySlugPage({ params }: Props) {
       if (text) meaningMap.set(m.word_id, text)
     }
   }
-
-  const isJa = locale === 'ja'
   const subCat = !isPos
     ? WORD_CATEGORY_GROUPS.flatMap(g => g.subCategories).find(s => s.key === value)
     : null
