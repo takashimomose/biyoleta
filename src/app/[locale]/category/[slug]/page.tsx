@@ -39,12 +39,15 @@ export default async function CategorySlugPage({ params }: Props) {
   const wordIds = words.map((w: Word) => w.id)
   const { data: meanings } = await supabase
     .from('meanings')
-    .select('word_id, meaning_en')
+    .select('word_id, meaning_en, meaning_ja')
     .in('word_id', wordIds)
 
   const meaningMap = new Map<number, string>()
   for (const m of meanings ?? []) {
-    if (!meaningMap.has(m.word_id) && m.meaning_en) meaningMap.set(m.word_id, m.meaning_en)
+    if (!meaningMap.has(m.word_id)) {
+      const text = isJa ? (m.meaning_ja || m.meaning_en) : m.meaning_en
+      if (text) meaningMap.set(m.word_id, text)
+    }
   }
 
   const isJa = locale === 'ja'

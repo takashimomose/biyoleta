@@ -109,7 +109,7 @@ export default async function HowToSayPage({ params }: Props) {
             )}
 
             <div className="mt-4 space-y-1">
-              {r.meaning_en && (
+              {!isJa && r.meaning_en && (
                 <p className="text-gray-700">
                   <span className="text-xs text-gray-400 mr-2">EN</span>{r.meaning_en}
                 </p>

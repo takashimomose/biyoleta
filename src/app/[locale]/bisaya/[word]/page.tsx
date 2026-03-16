@@ -78,11 +78,6 @@ export default async function BisayaJaPage({ params }: Props) {
                 {t('seeMore')}
               </Link>
             </div>
-            {r.meaning_en && (
-              <p className="text-gray-700 mb-1">
-                <span className="text-xs text-gray-400 mr-2">EN</span>{r.meaning_en}
-              </p>
-            )}
             {r.meaning_ja && (
               <p className="text-gray-700 mb-1">
                 <span className="text-xs text-gray-400 mr-2">JA</span>{r.meaning_ja}

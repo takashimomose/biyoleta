@@ -3,20 +3,21 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { WORD_CATEGORY_GROUPS } from '@/lib/word-categories'
+import { WordCategoryGroup } from '@/lib/word-categories'
 
 type Props = {
   locale: string
   countMap: Record<string, number>
   isJa: boolean
+  groups: WordCategoryGroup[]
 }
 
-export default function CategoryAccordion({ locale, countMap, isJa }: Props) {
+export default function CategoryAccordion({ locale, countMap, isJa, groups }: Props) {
   const [openKey, setOpenKey] = useState<string | null>(null)
 
   return (
     <div className="space-y-2">
-      {WORD_CATEGORY_GROUPS.map((group) => {
+      {groups.map((group) => {
         const totalCount = group.subCategories.reduce((sum, s) => sum + (countMap[s.key] ?? 0), 0)
         const isOpen = openKey === group.key
 

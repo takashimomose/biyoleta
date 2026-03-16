@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tasklist:*)",
+      "Bash(cmd:*)",
+      "Bash(npm run:*)",
+      "Bash(sed:*)",
+      "Bash(do:*)",
+      "Bash(ls:*)"
+    ]
+  }
+}

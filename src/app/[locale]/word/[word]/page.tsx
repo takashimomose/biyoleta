@@ -115,7 +115,7 @@ export default async function WordPage({ params }: Props) {
             <p className="text-xs text-gray-400 font-medium uppercase tracking-wide">
               {t('meaning')} {meanings.length > 1 ? i + 1 : ''}
             </p>
-            {m.meaning_en && (
+            {!isJa && m.meaning_en && (
               <p><span className="text-xs text-gray-400 mr-2">EN</span>{m.meaning_en}</p>
             )}
             {m.meaning_ja && (

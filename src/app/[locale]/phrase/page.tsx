@@ -4,12 +4,20 @@ import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import Image from 'next/image'
 
-type Props = { params: Promise<{ locale: string }> }
+const PAGE_SIZE = 10
 
-export default async function PhrasePage({ params }: Props) {
+type Props = { params: Promise<{ locale: string }>; searchParams: Promise<{ page?: string }> }
+
+export default async function PhrasePage({ params, searchParams }: Props) {
   const { locale } = await params
+  const { page } = await searchParams
   const t = await getTranslations('phrases')
   const isJa = locale === 'ja'
+
+  const currentPage = Math.max(1, parseInt(page ?? '1', 10))
+  const offset = (currentPage - 1) * PAGE_SIZE
+  const totalPages = Math.ceil(PHRASE_CATEGORIES.length / PAGE_SIZE)
+  const visibleCategories = PHRASE_CATEGORIES.slice(offset, offset + PAGE_SIZE)
 
   const { data: counts } = await supabase.rpc('get_phrase_category_counts')
 
@@ -20,6 +28,8 @@ export default async function PhrasePage({ params }: Props) {
     countMap.set(row.category ?? '__none__', c)
     total += c
   }
+
+  const pageUrl = (p: number) => `/${locale}/phrase?page=${p}`
 
   return (
     <main className="min-h-screen p-4 sm:p-8 max-w-2xl mx-auto">
@@ -33,7 +43,7 @@ export default async function PhrasePage({ params }: Props) {
       <p className="text-gray-500 text-sm mb-8">{t('subtitle')}</p>
 
       <div className="grid grid-cols-2 gap-3">
-        {PHRASE_CATEGORIES.map(({ key, icon, en, ja }) => {
+        {visibleCategories.map(({ key, icon, en, ja }) => {
           const count = countMap.get(key) ?? 0
           return (
             <Link
@@ -50,6 +60,30 @@ export default async function PhrasePage({ params }: Props) {
           )
         })}
       </div>
+
+      {totalPages > 1 && (
+        <div className="flex items-center justify-center gap-2 mt-8">
+          {currentPage > 1 && (
+            <Link href={pageUrl(currentPage - 1)} className="btn-page">
+              ←
+            </Link>
+          )}
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+            <Link
+              key={p}
+              href={pageUrl(p)}
+              className={`btn-page ${p === currentPage ? 'btn-page-active' : ''}`}
+            >
+              {p}
+            </Link>
+          ))}
+          {currentPage < totalPages && (
+            <Link href={pageUrl(currentPage + 1)} className="btn-page">
+              →
+            </Link>
+          )}
+        </div>
+      )}
     </main>
   )
 }

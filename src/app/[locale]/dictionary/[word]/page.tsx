@@ -3,7 +3,9 @@ import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
 
-type Props = { params: Promise<{ locale: string; word: string }> }
+const PAGE_SIZE = 50
+
+type Props = { params: Promise<{ locale: string; word: string }>; searchParams: Promise<{ page?: string }> }
 
 export async function generateStaticParams() {
   const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
@@ -21,27 +23,33 @@ export async function generateMetadata({ params }: Props) {
   }
 }
 
-export default async function DictionaryWordPage({ params }: Props) {
+export default async function DictionaryWordPage({ params, searchParams }: Props) {
   const { locale, word: slug } = await params
 
   // Single letter → A-Z page
   if (/^[a-z]$/.test(slug)) {
-    return <AZPage locale={locale} letter={slug} />
+    const { page } = await searchParams
+    const currentPage = Math.max(1, parseInt(page ?? '1', 10))
+    return <AZPage locale={locale} letter={slug} currentPage={currentPage} />
   }
 
   // Word slug → redirect to canonical /word/[word]
   redirect(`/${locale}/word/${slug}`)
 }
 
-async function AZPage({ locale, letter }: { locale: string; letter: string }) {
+async function AZPage({ locale, letter, currentPage }: { locale: string; letter: string; currentPage: number }) {
   const isJa = locale === 'ja'
   const t = await getTranslations('words')
+  const offset = (currentPage - 1) * PAGE_SIZE
 
-  const { data: words } = await supabase
+  const { data: words, count } = await supabase
     .from('words')
-    .select('id, word, part_of_speech')
+    .select('id, word, part_of_speech', { count: 'exact' })
     .ilike('word', `${letter}%`)
     .order('word', { ascending: true })
+    .range(offset, offset + PAGE_SIZE - 1)
+
+  const totalPages = Math.ceil((count ?? 0) / PAGE_SIZE)
 
   const wordIds = (words ?? []).map((w: any) => w.id)
   const { data: meanings } = wordIds.length > 0
@@ -56,6 +64,8 @@ async function AZPage({ locale, letter }: { locale: string; letter: string }) {
     }
   }
 
+  const pageUrl = (p: number) => `/${locale}/dictionary/${letter}?page=${p}`
+
   return (
     <main className="min-h-screen p-4 sm:p-8 max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-8">
@@ -63,7 +73,7 @@ async function AZPage({ locale, letter }: { locale: string; letter: string }) {
       </div>
       <div className="flex items-baseline justify-between mb-6">
         <h1 className="text-2xl font-bold">Bisaya words: {letter.toUpperCase()}</h1>
-        <span className="text-sm text-gray-400">{words?.length ?? 0} {isJa ? '語' : 'words'}</span>
+        <span className="text-sm text-gray-400">{count ?? 0} {isJa ? '語' : 'words'}</span>
       </div>
 
       <ul className="divide-y divide-gray-200">
@@ -86,6 +96,30 @@ async function AZPage({ locale, letter }: { locale: string; letter: string }) {
           </li>
         ))}
       </ul>
+
+      {totalPages > 1 && (
+        <div className="flex items-center justify-center gap-2 mt-8">
+          {currentPage > 1 && (
+            <Link href={pageUrl(currentPage - 1)} className="btn-page">
+              ←
+            </Link>
+          )}
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+            <Link
+              key={p}
+              href={pageUrl(p)}
+              className={`btn-page ${p === currentPage ? 'btn-page-active' : ''}`}
+            >
+              {p}
+            </Link>
+          ))}
+          {currentPage < totalPages && (
+            <Link href={pageUrl(currentPage + 1)} className="btn-page">
+              →
+            </Link>
+          )}
+        </div>
+      )}
     </main>
   )
 }

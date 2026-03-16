@@ -20,6 +20,7 @@ export default async function FlashcardsPage({ params }: Props) {
     .select('meaning_en, meaning_ja, words(word)')
     .not('meaning_en', 'is', null)
     .not('meaning_ja', 'is', null)
+    .limit(100)
 
   const words = (data ?? [])
     .map((m: any) => ({
