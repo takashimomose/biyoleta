@@ -9,10 +9,19 @@ export const revalidate = 86400
 type Props = { params: Promise<{ locale: string; word: string }> }
 
 export async function generateStaticParams() {
-  const { data: words } = await supabase.from('words').select('word').limit(50000)
-  return (words ?? []).flatMap((w) => [
-    { locale: 'en', word: w.word },
-    { locale: 'ja', word: w.word },
+  const allWords: string[] = []
+  const pageSize = 1000
+  let offset = 0
+  while (true) {
+    const { data } = await supabase.from('words').select('word').range(offset, offset + pageSize - 1)
+    if (!data || data.length === 0) break
+    allWords.push(...data.map((w: any) => w.word))
+    if (data.length < pageSize) break
+    offset += pageSize
+  }
+  return allWords.flatMap((word) => [
+    { locale: 'en', word },
+    { locale: 'ja', word },
   ])
 }
 

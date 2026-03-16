@@ -8,12 +8,29 @@ export type LanguagePairResult = {
   example: string | null
 }
 
+async function fetchAllMeanings(column: 'meaning_en' | 'meaning_ja'): Promise<string[]> {
+  const results: string[] = []
+  const pageSize = 1000
+  let offset = 0
+  while (true) {
+    const { data } = await supabase
+      .from('meanings')
+      .select(column)
+      .range(offset, offset + pageSize - 1)
+    if (!data || data.length === 0) break
+    results.push(...data.map((r: any) => r[column] ?? ''))
+    if (data.length < pageSize) break
+    offset += pageSize
+  }
+  return results
+}
+
 /** meaning_en の全エントリから個別キーワードを抽出してスラッグ化 */
 export async function getAllEnglishSlugs(): Promise<string[]> {
-  const { data } = await supabase.from('meanings').select('meaning_en').limit(50000)
+  const rows = await fetchAllMeanings('meaning_en')
   const slugs = new Set<string>()
-  for (const row of data ?? []) {
-    for (const part of (row.meaning_en ?? '').split(',')) {
+  for (const val of rows) {
+    for (const part of val.split(',')) {
       const slug = part.trim().toLowerCase().replace(/\s+/g, '-')
       if (slug.length > 1) slugs.add(slug)
     }
@@ -23,10 +40,10 @@ export async function getAllEnglishSlugs(): Promise<string[]> {
 
 /** meaning_ja の全エントリから個別キーワードを抽出してスラッグ化 */
 export async function getAllJapaneseSlugs(): Promise<string[]> {
-  const { data } = await supabase.from('meanings').select('meaning_ja').limit(50000)
+  const rows = await fetchAllMeanings('meaning_ja')
   const slugs = new Set<string>()
-  for (const row of data ?? []) {
-    for (const part of (row.meaning_ja ?? '').split(/[、,，]/)) {
+  for (const val of rows) {
+    for (const part of val.split(/[、,，]/)) {
       const slug = part.trim()
       if (slug.length > 0) slugs.add(slug)
     }
