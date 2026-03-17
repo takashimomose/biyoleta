@@ -1,5 +1,6 @@
 import { getResultsByJapanese } from '@/lib/language-pair'
 import BackButton from '@/components/BackButton'
+import Link from 'next/link'
 
 type Props = {
   params: Promise<{ locale: string }>
