@@ -2,6 +2,8 @@ import { supabase } from '@/lib/supabase'
 import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
+import BackButton from '@/components/BackButton'
+import Pagination from '@/components/Pagination'
 
 const PAGE_SIZE = 50
 
@@ -69,7 +71,7 @@ async function AZPage({ locale, letter, currentPage }: { locale: string; letter:
   return (
     <main className="min-h-screen p-4 sm:p-8 max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-8">
-        <Link href={`/${locale}/dictionary`} className="text-sm text-gray-500 hover:opacity-70">← {t('title')}</Link>
+        <BackButton label={isJa ? '← 戻る' : '← Back'} />
       </div>
       <div className="flex items-baseline justify-between mb-6">
         <h1 className="text-2xl font-bold">Bisaya words: {letter.toUpperCase()}</h1>
@@ -97,29 +99,7 @@ async function AZPage({ locale, letter, currentPage }: { locale: string; letter:
         ))}
       </ul>
 
-      {totalPages > 1 && (
-        <div className="flex items-center justify-center gap-2 mt-8">
-          {currentPage > 1 && (
-            <Link href={pageUrl(currentPage - 1)} className="btn-page">
-              ←
-            </Link>
-          )}
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-            <Link
-              key={p}
-              href={pageUrl(p)}
-              className={`btn-page ${p === currentPage ? 'btn-page-active' : ''}`}
-            >
-              {p}
-            </Link>
-          ))}
-          {currentPage < totalPages && (
-            <Link href={pageUrl(currentPage + 1)} className="btn-page">
-              →
-            </Link>
-          )}
-        </div>
-      )}
+      <Pagination currentPage={currentPage} totalPages={totalPages} basePath={`/${locale}/dictionary/${letter}`} />
     </main>
   )
 }

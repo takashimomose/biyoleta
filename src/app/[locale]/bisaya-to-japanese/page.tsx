@@ -1,5 +1,6 @@
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
+import BackButton from '@/components/BackButton'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -74,9 +75,7 @@ export default async function BisayaToJapanesePage({ params, searchParams }: Pro
   return (
     <main className="min-h-screen p-4 sm:p-8 max-w-2xl mx-auto">
       <div className="mb-8">
-        <Link href={`/${locale}`} className="text-sm text-gray-500 hover:opacity-70">
-          {isJa ? '← トップ' : '← Home'}
-        </Link>
+        <BackButton label={isJa ? '← 戻る' : '← Back'} />
       </div>
 
       <h1 className="text-3xl font-bold mb-2">

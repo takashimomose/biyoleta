@@ -2,6 +2,7 @@ import { supabase } from '@/lib/supabase'
 import { getTranslations } from 'next-intl/server'
 import { Word } from '@/lib/types'
 import Link from 'next/link'
+import BackButton from '@/components/BackButton'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -12,6 +13,7 @@ export default async function SearchPage({ params, searchParams }: Props) {
   const { locale } = await params
   const { q } = await searchParams
   const t = await getTranslations('search')
+  const isJa = locale === 'ja'
   const query = q?.trim() ?? ''
 
   let words: Word[] = []
@@ -36,7 +38,7 @@ export default async function SearchPage({ params, searchParams }: Props) {
   return (
     <main className="min-h-screen p-4 sm:p-8 max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-8">
-        <Link href={`/${locale}`} className="text-sm text-gray-500 hover:opacity-70">{t('back')}</Link>
+        <BackButton label={isJa ? '← 戻る' : '← Back'} />
       </div>
       <h1 className="text-2xl font-bold mb-6">{t('title')}</h1>
 

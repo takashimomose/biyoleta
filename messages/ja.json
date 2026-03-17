@@ -13,7 +13,7 @@
     "translate": "翻訳検索",
     "browse": "カテゴリ",
     "quiz": "クイズ",
-    "flashcards": "フラッシュカード",
+    "flashcards": "単語カード",
     "whatIsBisaya": "ビサヤ語（セブアノ語）とは？"
   },
   "words": {
@@ -107,8 +107,8 @@
     "words": "{count} 語"
   },
   "flashcards": {
-    "title": "フラッシュカード",
-    "subtitle": "ビサヤ語の語彙を練習",
+    "title": "単語カード",
+    "subtitle": "ビサヤ語の単語を覚えよう",
     "back": "← トップ",
     "modeLabel": "モードを選択",
     "modeBisayaToEn": "ビサヤ語 → 日本語",

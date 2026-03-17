@@ -2,6 +2,7 @@ import { getAllEnglishSlugs, getAllJapaneseSlugs, getResultsByEnglish, getResult
 import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import BackButton from '@/components/BackButton'
 
 export const revalidate = 86400
 
@@ -81,7 +82,7 @@ export default async function HowToSayPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="flex items-center justify-between mb-8">
-        <Link href={`/${locale}`} className="text-sm text-gray-500 hover:opacity-70">{t('back')}</Link>
+        <BackButton label={isJa ? '← 戻る' : '← Back'} />
       </div>
 
       <h1 className="text-3xl font-bold mb-1">{t('heading', { word: label })}</h1>

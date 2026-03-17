@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import BackButton from '@/components/BackButton'
 
 type Props = { params: Promise<{ locale: string }> }
 
@@ -25,7 +26,7 @@ function EnPage({ locale }: { locale: string }) {
   return (
     <main className="min-h-screen p-4 sm:p-8 max-w-2xl mx-auto">
       <div className="mb-8">
-        <Link href={`/${locale}`} className="text-sm text-gray-500 hover:opacity-70">← Home</Link>
+        <BackButton label="← Back" />
       </div>
 
       <h1 className="text-3xl font-bold mb-2">What is Bisaya / Cebuano?</h1>
@@ -134,7 +135,7 @@ function JaPage({ locale }: { locale: string }) {
   return (
     <main className="min-h-screen p-4 sm:p-8 max-w-2xl mx-auto">
       <div className="mb-8">
-        <Link href={`/${locale}`} className="text-sm text-gray-500 hover:opacity-70">← トップ</Link>
+        <BackButton />
       </div>
 
       <h1 className="text-3xl font-bold mb-2">ビサヤ語（セブアノ語）とは？</h1>

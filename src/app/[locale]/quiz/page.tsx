@@ -1,7 +1,7 @@
 import { supabase } from '@/lib/supabase'
 import { getTranslations } from 'next-intl/server'
-import Link from 'next/link'
 import Quiz from '@/components/Quiz'
+import BackButton from '@/components/BackButton'
 
 type Props = { params: Promise<{ locale: string }> }
 
@@ -13,6 +13,7 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function QuizPage({ params }: Props) {
   const { locale } = await params
+  const isJa = locale === 'ja'
   const t = await getTranslations('quiz')
 
   const { data } = await supabase
@@ -51,7 +52,7 @@ export default async function QuizPage({ params }: Props) {
   return (
     <main className="min-h-screen p-4 sm:p-8 max-w-xl mx-auto">
       <div className="flex items-center justify-between mb-8">
-        <Link href={`/${locale}`} className="text-sm text-gray-500 hover:opacity-70">{t('back')}</Link>
+        <BackButton label={isJa ? '← 戻る' : '← Back'} />
       </div>
 
       <div className="text-center mb-10">

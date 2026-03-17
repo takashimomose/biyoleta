@@ -3,6 +3,8 @@ import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { PHRASE_CATEGORIES } from '@/lib/phrase-categories'
+import BackButton from '@/components/BackButton'
+import Pagination from '@/components/Pagination'
 
 const PAGE_SIZE = 50
 
@@ -51,7 +53,7 @@ export default async function PhraseSlugPage({ params, searchParams }: Props) {
   return (
     <main className="min-h-screen p-4 sm:p-8 max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-8">
-        <Link href={`/${locale}/phrase`} className="text-sm text-gray-500 hover:opacity-70">{t('backToCategories')}</Link>
+        <BackButton label={isJa ? '← 戻る' : '← Back'} />
       </div>
 
       <div className="mb-8">
@@ -72,7 +74,7 @@ export default async function PhraseSlugPage({ params, searchParams }: Props) {
                   <span className="text-xs text-gray-400 mr-2">EN</span>{phrase.meaning_en}
                 </p>
               )}
-              {phrase.meaning_ja && (
+              {isJa && phrase.meaning_ja && (
                 <p className="text-gray-600 mb-3">
                   <span className="text-xs text-gray-400 mr-2">JA</span>{phrase.meaning_ja}
                 </p>
@@ -88,29 +90,7 @@ export default async function PhraseSlugPage({ params, searchParams }: Props) {
         </ul>
       )}
 
-      {totalPages > 1 && (
-        <div className="flex items-center justify-center gap-2 mt-8">
-          {currentPage > 1 && (
-            <Link href={pageUrl(currentPage - 1)} className="btn-page">
-              ←
-            </Link>
-          )}
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-            <Link
-              key={p}
-              href={pageUrl(p)}
-              className={`btn-page ${p === currentPage ? 'btn-page-active' : ''}`}
-            >
-              {p}
-            </Link>
-          ))}
-          {currentPage < totalPages && (
-            <Link href={pageUrl(currentPage + 1)} className="btn-page">
-              →
-            </Link>
-          )}
-        </div>
-      )}
+      <Pagination currentPage={currentPage} totalPages={totalPages} basePath={`/${locale}/phrase/${slug}`} />
     </main>
   )
 }

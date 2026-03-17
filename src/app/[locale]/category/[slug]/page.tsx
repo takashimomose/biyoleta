@@ -4,6 +4,7 @@ import { Word } from '@/lib/types'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { WORD_CATEGORY_GROUPS } from '@/lib/word-categories'
+import BackButton from '@/components/BackButton'
 
 type Props = { params: Promise<{ locale: string; slug: string }> }
 
@@ -61,7 +62,7 @@ export default async function CategorySlugPage({ params }: Props) {
   return (
     <main className="min-h-screen p-8 max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-8">
-        <Link href={`/${locale}/category`} className="text-sm text-gray-500 hover:opacity-70">{t('backToCategories')}</Link>
+        <BackButton label={isJa ? '← 戻る' : '← Back'} />
       </div>
 
       <div className="mb-8">

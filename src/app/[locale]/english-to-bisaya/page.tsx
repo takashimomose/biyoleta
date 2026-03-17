@@ -1,5 +1,6 @@
 import { getResultsByEnglish } from '@/lib/language-pair'
 import Link from 'next/link'
+import BackButton from '@/components/BackButton'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -34,10 +35,12 @@ export default async function EnglishToBisayaPage({ params, searchParams }: Prop
     const lq = query.toLowerCase()
     results = raw.sort((a, b) => {
       const rank = (m: string | null) => {
-        if (!m) return 2
+        if (!m) return 3
         const s = m.toLowerCase()
-        if (s.startsWith(lq)) return 0
-        return 1
+        const firstKeyword = s.split(/[,;.]/)[0].trim()
+        if (firstKeyword === lq) return 0
+        if (s.startsWith(lq)) return 1
+        return 2
       }
       return rank(a.meaning_en) - rank(b.meaning_en)
     })
@@ -46,9 +49,7 @@ export default async function EnglishToBisayaPage({ params, searchParams }: Prop
   return (
     <main className="min-h-screen p-4 sm:p-8 max-w-2xl mx-auto">
       <div className="mb-8">
-        <Link href={`/${locale}`} className="text-sm text-gray-500 hover:opacity-70">
-          {isJa ? '← トップ' : '← Home'}
-        </Link>
+        <BackButton label={isJa ? '← 戻る' : '← Back'} />
       </div>
       <h1 className="text-3xl font-bold mb-2">
         {isJa ? '英語からビサヤ語' : 'English to Bisaya'}

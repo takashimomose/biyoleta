@@ -3,6 +3,8 @@ import { PHRASE_CATEGORIES } from '@/lib/phrase-categories'
 import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import Image from 'next/image'
+import BackButton from '@/components/BackButton'
+import Pagination from '@/components/Pagination'
 
 const PAGE_SIZE = 10
 
@@ -34,7 +36,7 @@ export default async function PhrasePage({ params, searchParams }: Props) {
   return (
     <main className="min-h-screen p-4 sm:p-8 max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-8">
-        <Link href={`/${locale}`} className="text-sm text-gray-500 hover:opacity-70">{t('back')}</Link>
+        <BackButton label={isJa ? '← 戻る' : '← Back'} />
       </div>
       <div className="flex items-baseline justify-between mb-2">
         <h1 className="text-2xl font-bold">{t('title')}</h1>
@@ -61,29 +63,7 @@ export default async function PhrasePage({ params, searchParams }: Props) {
         })}
       </div>
 
-      {totalPages > 1 && (
-        <div className="flex items-center justify-center gap-2 mt-8">
-          {currentPage > 1 && (
-            <Link href={pageUrl(currentPage - 1)} className="btn-page">
-              ←
-            </Link>
-          )}
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-            <Link
-              key={p}
-              href={pageUrl(p)}
-              className={`btn-page ${p === currentPage ? 'btn-page-active' : ''}`}
-            >
-              {p}
-            </Link>
-          ))}
-          {currentPage < totalPages && (
-            <Link href={pageUrl(currentPage + 1)} className="btn-page">
-              →
-            </Link>
-          )}
-        </div>
-      )}
+      <Pagination currentPage={currentPage} totalPages={totalPages} basePath={`/${locale}/phrase`} />
     </main>
   )
 }

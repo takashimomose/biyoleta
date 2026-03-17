@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
+import BackButton from '@/components/BackButton'
 
 type Props = { params: Promise<{ locale: string }> }
 
@@ -36,9 +37,7 @@ export default async function HowToSayIndexPage({ params }: Props) {
   return (
     <main className="min-h-screen p-4 sm:p-8 max-w-2xl mx-auto">
       <div className="mb-8">
-        <Link href={`/${locale}`} className="text-sm text-gray-500 hover:opacity-70">
-          {isJa ? '← トップ' : '← Home'}
-        </Link>
+        <BackButton label={isJa ? '← 戻る' : '← Back'} />
       </div>
       <h1 className="text-3xl font-bold mb-2">
         {isJa ? 'ビサヤ語での言い方' : 'How to Say in Bisaya'}

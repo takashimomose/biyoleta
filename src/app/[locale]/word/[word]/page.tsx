@@ -3,6 +3,7 @@ import { Meaning } from '@/lib/types'
 import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import BackButton from '@/components/BackButton'
 
 export const revalidate = 86400
 
@@ -30,8 +31,9 @@ export async function generateMetadata({ params }: Props) {
   const { data: word } = await supabase
     .from('words')
     .select('word, part_of_speech')
-    .eq('word', slug)
-    .single()
+    .ilike('word', slug)
+    .limit(1)
+    .maybeSingle()
 
   if (!word) return {}
 
@@ -55,8 +57,9 @@ export default async function WordPage({ params }: Props) {
   const { data: word } = await supabase
     .from('words')
     .select('*')
-    .eq('word', slug)
-    .single()
+    .ilike('word', slug)
+    .limit(1)
+    .maybeSingle()
 
   if (!word) notFound()
 
@@ -94,7 +97,7 @@ export default async function WordPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="flex items-center justify-between mb-8">
-        <Link href={`/${locale}/dictionary`} className="text-sm text-gray-500 hover:opacity-70">{t('back')}</Link>
+        <BackButton label={isJa ? '← 戻る' : '← Back'} />
       </div>
 
       <div className="border-b border-gray-200 pb-6 mb-6">
@@ -118,7 +121,7 @@ export default async function WordPage({ params }: Props) {
             {!isJa && m.meaning_en && (
               <p><span className="text-xs text-gray-400 mr-2">EN</span>{m.meaning_en}</p>
             )}
-            {m.meaning_ja && (
+            {isJa && m.meaning_ja && (
               <p><span className="text-xs text-gray-400 mr-2">JA</span>{m.meaning_ja}</p>
             )}
             {m.example && (
@@ -174,7 +177,7 @@ export default async function WordPage({ params }: Props) {
                     <span className="text-xs text-gray-400 mr-2">EN</span>{p.meaning_en}
                   </p>
                 )}
-                {p.meaning_ja && (
+                {isJa && p.meaning_ja && (
                   <p className="text-sm text-gray-600">
                     <span className="text-xs text-gray-400 mr-2">JA</span>{p.meaning_ja}
                   </p>
