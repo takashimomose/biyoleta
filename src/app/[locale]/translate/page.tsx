@@ -27,6 +27,7 @@ export default async function TranslatePage({ params, searchParams }: Props) {
   const { locale } = await params
   const { q } = await searchParams
   const t = await getTranslations('translate')
+  const isJa = locale === 'ja'
   const query = q?.trim() ?? ''
 
   let wordResults: WordResult[] = []
