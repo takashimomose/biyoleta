@@ -43,7 +43,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         {children}
       </div>
       <footer className="fixed bottom-0 left-0 right-0 z-50 flex justify-center py-2 text-xs bg-white/80 backdrop-blur-sm border-t border-gray-100" style={{ color: '#7a3aad' }}>
-        © {new Date().getFullYear()} Biyoleta. All rights reserved.
+        © {new Date().getFullYear()} Biyoleta
       </footer>
     </NextIntlClientProvider>
   )
