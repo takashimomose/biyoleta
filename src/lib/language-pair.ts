@@ -58,13 +58,27 @@ export async function getResultsByEnglish(slug: string): Promise<LanguagePairRes
     .from('meanings')
     .select('meaning_en, meaning_ja, example, words(word, part_of_speech)')
     .ilike('meaning_en', `%${keyword}%`)
-  return (data ?? []).map((m: any) => ({
+
+  const results = (data ?? []).map((m: any) => ({
     word: m.words.word,
     part_of_speech: m.words.part_of_speech,
     meaning_en: m.meaning_en,
     meaning_ja: m.meaning_ja,
     example: m.example,
   }))
+
+  // 完全一致・先頭一致を上位に表示
+  const kw = keyword.toLowerCase()
+  return results.sort((a, b) => {
+    const rank = (meaning: string | null) => {
+      if (!meaning) return 3
+      const parts = meaning.toLowerCase().split(',').map(s => s.trim())
+      if (parts.includes(kw)) return 0          // カンマ区切りの中に完全一致
+      if (parts[0].startsWith(kw)) return 1     // 先頭の意味がキーワードで始まる
+      return 2
+    }
+    return rank(a.meaning_en) - rank(b.meaning_en)
+  })
 }
 
 /** 日本語キーワードに対応するビサヤ語エントリを取得 */

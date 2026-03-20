@@ -3,7 +3,8 @@ import { getMessages, getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import LocaleSwitcher from '@/components/LocaleSwitcher'
+import { NavigationHistoryProvider } from '@/components/NavigationHistoryProvider'
+import HeaderLocaleSwitcher from '@/components/HeaderLocaleSwitcher'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -33,18 +34,22 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <NextIntlClientProvider messages={messages}>
+    <NavigationHistoryProvider>
       <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 py-3 bg-white/80 backdrop-blur-sm border-b border-gray-100">
         <Link href={`/${locale}`} aria-label="Top page">
           <Image src="/logo.svg" alt="Biyoleta" width={28} height={35} priority />
         </Link>
-        <LocaleSwitcher />
+        <HeaderLocaleSwitcher />
       </header>
       <div className="pt-[52px] pb-[36px]">
         {children}
       </div>
-      <footer className="fixed bottom-0 left-0 right-0 z-50 flex justify-center py-2 text-xs bg-white/80 backdrop-blur-sm border-t border-gray-100" style={{ color: '#7a3aad' }}>
-        © {new Date().getFullYear()} Biyoleta
+      <footer className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center gap-3 py-2 text-xs bg-white/80 backdrop-blur-sm border-t border-gray-100" style={{ color: '#7a3aad' }}>
+        <span>© {new Date().getFullYear()} Biyoleta</span>
+        <span className="text-gray-300">|</span>
+        <Link href="/en/privacy-policy" className="hover:opacity-70">Privacy Policy</Link>
       </footer>
+    </NavigationHistoryProvider>
     </NextIntlClientProvider>
   )
 }
