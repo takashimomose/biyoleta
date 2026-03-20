@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import { PHRASE_CATEGORIES } from '@/lib/phrase-categories'
 import BackButton from '@/components/BackButton'
 import Pagination from '@/components/Pagination'
+import SwipePageWrapper from '@/components/SwipePageWrapper'
 
 const PAGE_SIZE = 50
 
@@ -62,35 +63,41 @@ export default async function PhraseSlugPage({ params, searchParams }: Props) {
         <p className="text-sm text-gray-400 mt-1">{t('phraseCount', { count: count ?? 0 })}</p>
       </div>
 
-      {(!phrases || phrases.length === 0) ? (
-        <p className="text-gray-400 text-sm">{t('noPhrasesYet')}</p>
-      ) : (
-        <ul className="space-y-4">
-          {phrases.map((phrase: Phrase) => (
-            <li key={phrase.id} className="border border-gray-200 rounded-xl p-5">
-              <p className="text-xl font-semibold mb-1">{phrase.phrase}</p>
-              {!isJa && phrase.meaning_en && (
-                <p className="text-gray-600 mb-1">
-                  <span className="text-xs text-gray-400 mr-2">EN</span>{phrase.meaning_en}
-                </p>
-              )}
-              {isJa && phrase.meaning_ja && (
-                <p className="text-gray-600 mb-3">
-                  <span className="text-xs text-gray-400 mr-2">JA</span>{phrase.meaning_ja}
-                </p>
-              )}
-              {phrase.example && (
-                <div className="pl-3 border-l-2 border-gray-200">
-                  <p className="text-xs text-gray-400 mb-1">{t('example')}</p>
-                  <p className="text-gray-700 italic text-sm">{phrase.example}</p>
-                </div>
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
+      <SwipePageWrapper
+        currentPage={currentPage}
+        totalPages={totalPages}
+        basePath={`/${locale}/phrase/${slug}`}
+      >
+        {(!phrases || phrases.length === 0) ? (
+          <p className="text-gray-400 text-sm">{t('noPhrasesYet')}</p>
+        ) : (
+          <ul className="space-y-4">
+            {phrases.map((phrase: Phrase) => (
+              <li key={phrase.id} className="border border-gray-200 rounded-xl p-5">
+                <p className="text-xl font-semibold mb-1">{phrase.phrase}</p>
+                {!isJa && phrase.meaning_en && (
+                  <p className="text-gray-600 mb-1">
+                    <span className="text-xs text-gray-400 mr-2">EN</span>{phrase.meaning_en}
+                  </p>
+                )}
+                {isJa && phrase.meaning_ja && (
+                  <p className="text-gray-600 mb-3">
+                    <span className="text-xs text-gray-400 mr-2">JA</span>{phrase.meaning_ja}
+                  </p>
+                )}
+                {phrase.example && (
+                  <div className="pl-3 border-l-2 border-gray-200">
+                    <p className="text-xs text-gray-400 mb-1">{t('example')}</p>
+                    <p className="text-gray-700 italic text-sm">{phrase.example}</p>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
 
-      <Pagination currentPage={currentPage} totalPages={totalPages} basePath={`/${locale}/phrase/${slug}`} />
+        <Pagination currentPage={currentPage} totalPages={totalPages} basePath={`/${locale}/phrase/${slug}`} />
+      </SwipePageWrapper>
     </main>
   )
 }

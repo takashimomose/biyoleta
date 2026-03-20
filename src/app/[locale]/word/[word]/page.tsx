@@ -72,11 +72,11 @@ export default async function WordPage({ params }: Props) {
   ])
 
   let relatedWords: { id: number; word: string; part_of_speech: string | null }[] = []
-  if (word.category) {
+  if (word.subcategory) {
     const { data } = await supabase
       .from('words')
       .select('id, word, part_of_speech')
-      .eq('category', word.category)
+      .eq('subcategory', word.subcategory)
       .neq('id', word.id)
       .limit(8)
     relatedWords = data ?? []

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import BackButton from '@/components/BackButton'
 import Pagination from '@/components/Pagination'
+import SwipePageWrapper from '@/components/SwipePageWrapper'
 
 const PAGE_SIZE = 50
 
@@ -78,28 +79,30 @@ async function AZPage({ locale, letter, currentPage }: { locale: string; letter:
         <span className="text-sm text-gray-400">{count ?? 0} {isJa ? '語' : 'words'}</span>
       </div>
 
-      <ul className="divide-y divide-gray-200">
-        {(words ?? []).map((word: any) => (
-          <li key={word.id}>
-            <Link
-              href={`/${locale}/word/${word.word}`}
-              className="flex flex-col py-3 hover:bg-purple-50 px-2 rounded transition-colors gap-0.5"
-            >
-              <div className="flex items-center gap-2">
-                <span className="font-medium text-lg">{word.word}</span>
-                {word.part_of_speech && (
-                  <span className="text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded">{word.part_of_speech}</span>
+      <SwipePageWrapper currentPage={currentPage} totalPages={totalPages} basePath={`/${locale}/dictionary/${letter}`}>
+        <ul className="divide-y divide-gray-200">
+          {(words ?? []).map((word: any) => (
+            <li key={word.id}>
+              <Link
+                href={`/${locale}/word/${word.word}`}
+                className="flex flex-col py-3 hover:bg-purple-50 px-2 rounded transition-colors gap-0.5"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="font-medium text-lg">{word.word}</span>
+                  {word.part_of_speech && (
+                    <span className="text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded">{word.part_of_speech}</span>
+                  )}
+                </div>
+                {meaningMap.get(word.id) && (
+                  <span className="text-sm text-gray-400 truncate">{meaningMap.get(word.id)}</span>
                 )}
-              </div>
-              {meaningMap.get(word.id) && (
-                <span className="text-sm text-gray-400 truncate">{meaningMap.get(word.id)}</span>
-              )}
-            </Link>
-          </li>
-        ))}
-      </ul>
+              </Link>
+            </li>
+          ))}
+        </ul>
 
-      <Pagination currentPage={currentPage} totalPages={totalPages} basePath={`/${locale}/dictionary/${letter}`} />
+        <Pagination currentPage={currentPage} totalPages={totalPages} basePath={`/${locale}/dictionary/${letter}`} />
+      </SwipePageWrapper>
     </main>
   )
 }

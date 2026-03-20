@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import BackButton from '@/components/BackButton'
 import Pagination from '@/components/Pagination'
+import SwipePageWrapper from '@/components/SwipePageWrapper'
 
 const PAGE_SIZE = 10
 
@@ -44,26 +45,28 @@ export default async function PhrasePage({ params, searchParams }: Props) {
       </div>
       <p className="text-gray-500 text-sm mb-8">{t('subtitle')}</p>
 
-      <div className="grid grid-cols-2 gap-3">
-        {visibleCategories.map(({ key, icon, en, ja }) => {
-          const count = countMap.get(key) ?? 0
-          return (
-            <Link
-              key={key}
-              href={`/${locale}/phrase/${key}`}
-              className="card-3d flex items-center gap-3 p-4"
-            >
-              <Image src={`/openmoji/${icon}.svg`} alt={key} width={32} height={32} unoptimized />
-              <div>
-                <p className="font-semibold text-sm" style={{ color: '#512376' }}>{isJa ? ja : en}</p>
-                <p className="text-xs text-gray-400 mt-0.5">{t('phraseCount', { count })}</p>
-              </div>
-            </Link>
-          )
-        })}
-      </div>
+      <SwipePageWrapper currentPage={currentPage} totalPages={totalPages} basePath={`/${locale}/phrase`}>
+        <div className="grid grid-cols-2 gap-3">
+          {visibleCategories.map(({ key, icon, en, ja }) => {
+            const count = countMap.get(key) ?? 0
+            return (
+              <Link
+                key={key}
+                href={`/${locale}/phrase/${key}`}
+                className="card-3d flex items-center gap-3 p-4"
+              >
+                <Image src={`/openmoji/${icon}.svg`} alt={key} width={32} height={32} unoptimized />
+                <div>
+                  <p className="font-semibold text-sm" style={{ color: '#512376' }}>{isJa ? ja : en}</p>
+                  <p className="text-xs text-gray-400 mt-0.5">{t('phraseCount', { count })}</p>
+                </div>
+              </Link>
+            )
+          })}
+        </div>
 
-      <Pagination currentPage={currentPage} totalPages={totalPages} basePath={`/${locale}/phrase`} />
+        <Pagination currentPage={currentPage} totalPages={totalPages} basePath={`/${locale}/phrase`} />
+      </SwipePageWrapper>
     </main>
   )
 }

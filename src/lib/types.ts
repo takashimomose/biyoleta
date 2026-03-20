@@ -4,6 +4,7 @@ export type Word = {
   language: string | null
   part_of_speech: string | null
   category: string | null
+  subcategory: string | null
   created_at: string
 }
 

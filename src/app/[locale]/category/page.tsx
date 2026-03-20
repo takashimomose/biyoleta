@@ -4,6 +4,7 @@ import CategoryAccordion from '@/components/CategoryAccordion'
 import { WORD_CATEGORY_GROUPS } from '@/lib/word-categories'
 import BackButton from '@/components/BackButton'
 import Pagination from '@/components/Pagination'
+import SwipePageWrapper from '@/components/SwipePageWrapper'
 
 const PAGE_SIZE = 5
 
@@ -24,7 +25,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
 
   const countMap: Record<string, number> = {}
   for (const row of counts ?? []) {
-    countMap[row.category ?? '__none__'] = Number(row.count)
+    countMap[row.subcategory ?? '__none__'] = Number(row.count)
   }
 
   return (
@@ -34,9 +35,11 @@ export default async function CategoryPage({ params, searchParams }: Props) {
       </div>
       <h1 className="text-2xl font-bold mb-10">{t('title')}</h1>
 
-      <CategoryAccordion locale={locale} countMap={countMap} isJa={isJa} groups={visibleGroups} />
+      <SwipePageWrapper currentPage={currentPage} totalPages={totalPages} basePath={`/${locale}/category`}>
+        <CategoryAccordion locale={locale} countMap={countMap} isJa={isJa} groups={visibleGroups} />
 
-      <Pagination currentPage={currentPage} totalPages={totalPages} basePath={`/${locale}/category`} />
+        <Pagination currentPage={currentPage} totalPages={totalPages} basePath={`/${locale}/category`} />
+      </SwipePageWrapper>
     </main>
   )
 }

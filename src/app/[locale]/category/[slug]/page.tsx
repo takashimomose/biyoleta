@@ -9,11 +9,11 @@ import BackButton from '@/components/BackButton'
 type Props = { params: Promise<{ locale: string; slug: string }> }
 
 export async function generateStaticParams() {
-  const { data: words } = await supabase.from('words').select('category, part_of_speech')
+  const { data: words } = await supabase.from('words').select('subcategory, part_of_speech')
 
   const slugs = new Set<string>()
   for (const w of words ?? []) {
-    if (w.category) slugs.add(`category-${w.category}`)
+    if (w.subcategory) slugs.add(`category-${w.subcategory}`)
     if (w.part_of_speech) slugs.add(`pos-${w.part_of_speech}`)
   }
 
@@ -33,7 +33,7 @@ export default async function CategorySlugPage({ params }: Props) {
   const query = supabase.from('words').select('*').order('word')
   const { data: words } = isPos
     ? await query.eq('part_of_speech', value)
-    : await query.eq('category', value)
+    : await query.eq('subcategory', value)
 
   if (!words || words.length === 0) notFound()
 
