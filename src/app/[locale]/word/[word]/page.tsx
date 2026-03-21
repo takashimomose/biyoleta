@@ -7,7 +7,12 @@ import BackButton from '@/components/BackButton'
 
 export const revalidate = 86400
 
-type Props = { params: Promise<{ locale: string; word: string }> }
+const PHRASES_PER_PAGE = 10
+
+type Props = {
+  params: Promise<{ locale: string; word: string }>
+  searchParams: Promise<{ page?: string }>
+}
 
 export async function generateStaticParams() {
   const allWords: string[] = []
@@ -50,9 +55,11 @@ export async function generateMetadata({ params }: Props) {
   }
 }
 
-export default async function WordPage({ params }: Props) {
+export default async function WordPage({ params, searchParams }: Props) {
   const { locale, word: rawSlug } = await params
   const slug = decodeURIComponent(rawSlug)
+  const { page: pageParam } = await searchParams
+  const page = Math.max(1, parseInt(pageParam ?? '1', 10) || 1)
   const t = await getTranslations('word')
   const isJa = locale === 'ja'
 
@@ -72,6 +79,12 @@ export default async function WordPage({ params }: Props) {
       .select('id, phrase, meaning_en, meaning_ja')
       .ilike('phrase', `%${word.word}%`),
   ])
+
+  const totalPhrases = phrases?.length ?? 0
+  const totalPages = Math.ceil(totalPhrases / PHRASES_PER_PAGE)
+  const pagedPhrases = (phrases ?? []).slice((page - 1) * PHRASES_PER_PAGE, page * PHRASES_PER_PAGE)
+  const wordSlug = encodeURIComponent(slug)
+  const baseUrl = `/${locale}/word/${wordSlug}`
 
   let relatedWords: { id: number; word: string; part_of_speech: string | null }[] = []
   if (word.subcategory) {
@@ -165,13 +178,14 @@ export default async function WordPage({ params }: Props) {
       )}
 
       {/* Related Phrases */}
-      {phrases && phrases.length > 0 && (
+      {totalPhrases > 0 && (
         <section>
           <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">
             {t('relatedPhrases')}
+            <span className="ml-2 font-normal normal-case">({totalPhrases})</span>
           </h2>
           <ul className="space-y-2">
-            {phrases.map((p: any) => (
+            {pagedPhrases.map((p: any) => (
               <li key={p.id} className="border border-gray-200 rounded-xl p-4">
                 <p className="font-semibold mb-1">{p.phrase}</p>
                 {p.meaning_en && (
@@ -187,6 +201,27 @@ export default async function WordPage({ params }: Props) {
               </li>
             ))}
           </ul>
+          {totalPages > 1 && (
+            <div className="flex items-center justify-between mt-4">
+              {page > 1 ? (
+                <Link
+                  href={`${baseUrl}?page=${page - 1}`}
+                  className="px-4 py-2 text-sm border border-gray-200 rounded-full hover:bg-purple-50 transition-colors"
+                >
+                  ← {isJa ? '前へ' : 'Prev'}
+                </Link>
+              ) : <span />}
+              <span className="text-xs text-gray-400">{page} / {totalPages}</span>
+              {page < totalPages ? (
+                <Link
+                  href={`${baseUrl}?page=${page + 1}`}
+                  className="px-4 py-2 text-sm border border-gray-200 rounded-full hover:bg-purple-50 transition-colors"
+                >
+                  {isJa ? '次へ' : 'Next'} →
+                </Link>
+              ) : <span />}
+            </div>
+          )}
         </section>
       )}
     </main>
