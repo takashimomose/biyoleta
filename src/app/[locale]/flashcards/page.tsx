@@ -2,6 +2,7 @@ import { supabase } from '@/lib/supabase'
 import { getTranslations } from 'next-intl/server'
 import Flashcards from '@/components/Flashcards'
 import BackButton from '@/components/BackButton'
+import { WORD_CATEGORY_GROUPS } from '@/lib/word-categories'
 
 type Props = { params: Promise<{ locale: string }> }
 
@@ -18,34 +19,42 @@ export default async function FlashcardsPage({ params }: Props) {
 
   const { data } = await supabase
     .from('meanings')
-    .select('meaning_en, meaning_ja, words(word)')
+    .select('meaning_en, meaning_ja, words(word, category)')
     .not('meaning_en', 'is', null)
     .not('meaning_ja', 'is', null)
-    .limit(100)
 
   const words = (data ?? [])
     .map((m: any) => ({
       word: m.words.word,
       meaning_en: m.meaning_en.split(',')[0].trim(),
       meaning_ja: m.meaning_ja.split(/[、,]/)[0].trim(),
+      category: m.words.category ?? null,
     }))
     .filter((w: any) => w.word && w.meaning_en && w.meaning_ja)
 
+  const categories = WORD_CATEGORY_GROUPS.map((g) => ({
+    key: g.key,
+    en: g.en,
+    ja: g.ja,
+  }))
+
   const messages = {
-    modeLabel:     t('modeLabel'),
+    modeLabel:      t('modeLabel'),
     modeBisayaToEn: t('modeBisayaToEn'),
     modeEnToBisaya: t('modeEnToBisaya'),
-    start:         t('start'),
-    tapToFlip:     t('tapToFlip'),
-    know:          t('know'),
-    dontKnow:      t('dontKnow'),
-    card:          t.raw('card') as string,
-    result:        t('result'),
-    known:         t('known'),
-    unknown:       t('unknown'),
-    retry:         t('retry'),
-    retryUnknown:  t('retryUnknown'),
-    backHome:      t('backHome'),
+    categoryLabel:  isJa ? 'カテゴリ' : 'Category',
+    categoryAll:    isJa ? 'すべて' : 'All',
+    start:          t('start'),
+    tapToFlip:      t('tapToFlip'),
+    know:           t('know'),
+    dontKnow:       t('dontKnow'),
+    card:           t.raw('card') as string,
+    result:         t('result'),
+    known:          t('known'),
+    unknown:        t('unknown'),
+    retry:          t('retry'),
+    retryUnknown:   t('retryUnknown'),
+    backHome:       t('backHome'),
   }
 
   return (
@@ -62,7 +71,7 @@ export default async function FlashcardsPage({ params }: Props) {
       {words.length < 1 ? (
         <p className="text-center text-gray-400">{t('notEnoughWords')}</p>
       ) : (
-        <Flashcards words={words} locale={locale} messages={messages} />
+        <Flashcards words={words} locale={locale} messages={messages} categories={categories} />
       )}
     </main>
   )

@@ -1,12 +1,18 @@
 'use client'
 
 import { useState, useCallback } from 'react'
-import Link from 'next/link'
 
 type FlashcardWord = {
   word: string
   meaning_en: string
   meaning_ja: string
+  category: string | null
+}
+
+type CategoryOption = {
+  key: string
+  en: string
+  ja: string
 }
 
 type Mode = 'bisaya-to-en' | 'en-to-bisaya'
@@ -15,6 +21,8 @@ type Messages = {
   modeLabel: string
   modeBisayaToEn: string
   modeEnToBisaya: string
+  categoryLabel: string
+  categoryAll: string
   start: string
   tapToFlip: string
   know: string
@@ -32,22 +40,27 @@ type Props = {
   words: FlashcardWord[]
   locale: string
   messages: Messages
+  categories: CategoryOption[]
 }
 
 function shuffle<T>(arr: T[]): T[] {
   return [...arr].sort(() => Math.random() - 0.5)
 }
 
-export default function Flashcards({ words, locale, messages: m }: Props) {
+export default function Flashcards({ words, locale, messages: m, categories }: Props) {
   const isJa = locale === 'ja'
-
   const [mode, setMode] = useState<Mode>('bisaya-to-en')
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
   const [deck, setDeck] = useState<FlashcardWord[] | null>(null)
   const [current, setCurrent] = useState(0)
   const [flipped, setFlipped] = useState(false)
   const [known, setKnown] = useState<FlashcardWord[]>([])
   const [unknown, setUnknown] = useState<FlashcardWord[]>([])
   const [finished, setFinished] = useState(false)
+
+  const getPool = useCallback((cat: string | null) => {
+    return cat ? words.filter((w) => w.category === cat) : words
+  }, [words])
 
   const start = useCallback((cardSet: FlashcardWord[]) => {
     setDeck(shuffle(cardSet))
@@ -85,26 +98,66 @@ export default function Flashcards({ words, locale, messages: m }: Props) {
 
   // Start screen
   if (!deck) {
+    const categoryCounts: Record<string, number> = {}
+    for (const w of words) {
+      if (w.category) categoryCounts[w.category] = (categoryCounts[w.category] ?? 0) + 1
+    }
+
     return (
-      <div className="flex flex-col items-center gap-6">
-        <p className="text-gray-500 text-sm">{m.modeLabel}</p>
-        <div className="flex gap-3">
-          {(['bisaya-to-en', 'en-to-bisaya'] as Mode[]).map((m2) => (
-            <button
-              key={m2}
-              onClick={() => setMode(m2)}
-              className={`px-4 py-2 rounded-full border text-sm transition-colors ${
-                mode === m2 ? 'text-white border-transparent' : 'border-gray-300 text-gray-600'
-              }`}
-              style={mode === m2 ? { backgroundColor: '#512376' } : {}}
-            >
-              {m2 === 'bisaya-to-en' ? m.modeBisayaToEn : m.modeEnToBisaya}
-            </button>
-          ))}
+      <div className="flex flex-col items-center gap-8">
+        {/* Mode */}
+        <div className="flex flex-col items-center gap-3">
+          <p className="text-gray-500 text-sm">{m.modeLabel}</p>
+          <div className="flex gap-3">
+            {(['bisaya-to-en', 'en-to-bisaya'] as Mode[]).map((m2) => (
+              <button
+                key={m2}
+                onClick={() => setMode(m2)}
+                className={`px-4 py-2 rounded-full border text-sm transition-colors ${
+                  mode === m2 ? 'text-white border-transparent' : 'border-gray-300 text-gray-600'
+                }`}
+                style={mode === m2 ? { backgroundColor: '#512376' } : {}}
+              >
+                {m2 === 'bisaya-to-en' ? m.modeBisayaToEn : m.modeEnToBisaya}
+              </button>
+            ))}
+          </div>
         </div>
+
+        {/* Category */}
+        <div className="w-full flex flex-col items-center gap-3">
+          <p className="text-gray-500 text-sm">{m.categoryLabel}</p>
+          <div className="flex flex-wrap justify-center gap-2">
+            <button
+              onClick={() => setSelectedCategory(null)}
+              className={`px-3 py-1.5 rounded-full border text-sm transition-colors ${
+                selectedCategory === null ? 'text-white border-transparent' : 'border-gray-300 text-gray-600'
+              }`}
+              style={selectedCategory === null ? { backgroundColor: '#512376' } : {}}
+            >
+              {m.categoryAll}
+            </button>
+            {categories
+              .filter((c) => (categoryCounts[c.key] ?? 0) >= 1)
+              .map((c) => (
+                <button
+                  key={c.key}
+                  onClick={() => setSelectedCategory(c.key)}
+                  className={`px-3 py-1.5 rounded-full border text-sm transition-colors ${
+                    selectedCategory === c.key ? 'text-white border-transparent' : 'border-gray-300 text-gray-600'
+                  }`}
+                  style={selectedCategory === c.key ? { backgroundColor: '#512376' } : {}}
+                >
+                  {isJa ? c.ja : c.en}
+                  <span className="ml-1 text-xs opacity-60">{categoryCounts[c.key] ?? 0}</span>
+                </button>
+              ))}
+          </div>
+        </div>
+
         <button
-          onClick={() => start(words)}
-          className="mt-2 px-8 py-3 text-white rounded-full hover:opacity-90 transition-colors"
+          onClick={() => start(getPool(selectedCategory))}
+          className="px-8 py-3 text-white rounded-full hover:opacity-90 transition-colors"
           style={{ backgroundColor: '#512376' }}
         >
           {m.start}
@@ -119,7 +172,6 @@ export default function Flashcards({ words, locale, messages: m }: Props) {
     return (
       <div className="flex flex-col items-center gap-6 w-full">
         <h2 className="text-2xl font-bold">{m.result}</h2>
-
         <div className="flex gap-8 text-center">
           <div>
             <p className="text-4xl font-bold text-green-500">{known.length}</p>
@@ -149,7 +201,7 @@ export default function Flashcards({ words, locale, messages: m }: Props) {
             </button>
           )}
           <button
-            onClick={() => start(words)}
+            onClick={() => start(getPool(selectedCategory))}
             className="px-6 py-3 rounded-full border border-gray-300 text-gray-600 hover:bg-purple-50 transition-colors text-sm"
           >
             {m.retry}
@@ -165,7 +217,6 @@ export default function Flashcards({ words, locale, messages: m }: Props) {
 
   return (
     <div className="flex flex-col items-center gap-6 w-full">
-      {/* Progress */}
       <div className="flex items-center justify-between w-full">
         <p className="text-sm text-gray-400">{cardLabel}</p>
         <div className="flex gap-3 text-sm">
@@ -180,7 +231,6 @@ export default function Flashcards({ words, locale, messages: m }: Props) {
         />
       </div>
 
-      {/* Card */}
       <div
         className="w-full cursor-pointer"
         style={{ perspective: '1000px' }}
@@ -194,7 +244,6 @@ export default function Flashcards({ words, locale, messages: m }: Props) {
             minHeight: '220px',
           }}
         >
-          {/* Front */}
           <div
             className="absolute inset-0 flex flex-col items-center justify-center rounded-2xl border-2 border-gray-100 p-8"
             style={{ backfaceVisibility: 'hidden', backgroundColor: 'white' }}
@@ -203,7 +252,6 @@ export default function Flashcards({ words, locale, messages: m }: Props) {
             <p className="text-xs text-gray-400">{m.tapToFlip}</p>
           </div>
 
-          {/* Back */}
           <div
             className="absolute inset-0 flex flex-col items-center justify-center rounded-2xl border-2 p-8"
             style={{
@@ -218,7 +266,6 @@ export default function Flashcards({ words, locale, messages: m }: Props) {
         </div>
       </div>
 
-      {/* Buttons (visible after flip) */}
       {flipped ? (
         <div className="flex gap-4 w-full">
           <button

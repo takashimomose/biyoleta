@@ -2,6 +2,7 @@ import { supabase } from '@/lib/supabase'
 import { getTranslations } from 'next-intl/server'
 import Quiz from '@/components/Quiz'
 import BackButton from '@/components/BackButton'
+import { WORD_CATEGORY_GROUPS } from '@/lib/word-categories'
 
 type Props = { params: Promise<{ locale: string }> }
 
@@ -18,7 +19,7 @@ export default async function QuizPage({ params }: Props) {
 
   const { data } = await supabase
     .from('meanings')
-    .select('meaning_en, meaning_ja, words(word)')
+    .select('meaning_en, meaning_ja, words(word, category)')
     .not('meaning_en', 'is', null)
     .not('meaning_ja', 'is', null)
 
@@ -27,13 +28,22 @@ export default async function QuizPage({ params }: Props) {
       word: m.words.word,
       meaning_en: m.meaning_en.split(',')[0].trim(),
       meaning_ja: m.meaning_ja.split(/[、,]/)[0].trim(),
+      category: m.words.category ?? null,
     }))
     .filter((w: any) => w.word && w.meaning_en && w.meaning_ja)
+
+  const categories = WORD_CATEGORY_GROUPS.map((g) => ({
+    key: g.key,
+    en: g.en,
+    ja: g.ja,
+  }))
 
   const messages = {
     modeLabel:      t('modeLabel'),
     modeBisayaToEn: t('modeBisayaToEn'),
     modeEnToBisaya: t('modeEnToBisaya'),
+    categoryLabel:  isJa ? 'カテゴリ' : 'Category',
+    categoryAll:    isJa ? 'すべて' : 'All',
     start:          t('start'),
     question:       t.raw('question') as string,
     correct:        t('correct'),
@@ -63,7 +73,7 @@ export default async function QuizPage({ params }: Props) {
       {words.length < 4 ? (
         <p className="text-center text-gray-400">{t('notEnoughWords')}</p>
       ) : (
-        <Quiz words={words} locale={locale} messages={messages} />
+        <Quiz words={words} locale={locale} messages={messages} categories={categories} />
       )}
     </main>
   )
