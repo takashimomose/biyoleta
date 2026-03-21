@@ -27,7 +27,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props) {
-  const { locale, word: slug } = await params
+  const { locale, word: rawSlug } = await params
+  const slug = decodeURIComponent(rawSlug)
   const { data: word } = await supabase
     .from('words')
     .select('word, part_of_speech')
@@ -50,7 +51,8 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function WordPage({ params }: Props) {
-  const { locale, word: slug } = await params
+  const { locale, word: rawSlug } = await params
+  const slug = decodeURIComponent(rawSlug)
   const t = await getTranslations('word')
   const isJa = locale === 'ja'
 
