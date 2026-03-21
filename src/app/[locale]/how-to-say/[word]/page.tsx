@@ -1,4 +1,5 @@
-import { getAllEnglishSlugs, getAllJapaneseSlugs, getResultsByEnglish, getResultsByJapanese } from '@/lib/language-pair'
+import { getAllEnglishSlugs, getResultsByEnglish } from '@/lib/language-pair'
+import { supabase } from '@/lib/supabase'
 import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -9,31 +10,50 @@ export const revalidate = 86400
 type Props = { params: Promise<{ locale: string; word: string }> }
 
 export async function generateStaticParams() {
-  const [enSlugs, jaSlugs] = await Promise.all([getAllEnglishSlugs(), getAllJapaneseSlugs()])
-  return [
-    // EN: /how-to-say/love-in-bisaya
-    ...enSlugs.map((word) => ({ locale: 'en', word: `${word}-in-bisaya` })),
-    // JA: /how-to-say/愛
-    ...jaSlugs.map((word) => ({ locale: 'ja', word })),
-  ]
+  const enSlugs = await getAllEnglishSlugs()
+  return enSlugs.flatMap((slug) => [
+    { locale: 'en', word: slug },
+    { locale: 'ja', word: slug },
+  ])
+}
+
+async function getJaLabel(slug: string): Promise<string> {
+  const keyword = slug.replace(/-/g, ' ')
+  const kw = keyword.toLowerCase()
+  const { data } = await supabase
+    .from('meanings')
+    .select('meaning_en, meaning_ja')
+    .ilike('meaning_en', `%${keyword}%`)
+    .not('meaning_ja', 'is', null)
+
+  if (!data || data.length === 0) return keyword
+
+  const rank = (meaning_en: string | null) => {
+    if (!meaning_en) return 3
+    const parts = meaning_en.toLowerCase().split(',').map(s => s.trim())
+    if (parts.includes(kw)) return 0
+    if (parts[0].startsWith(kw)) return 1
+    return 2
+  }
+
+  const best = data.sort((a, b) => rank(a.meaning_en) - rank(b.meaning_en))[0]
+  return best.meaning_ja?.split(/[、,，]/)[0].trim() || keyword
 }
 
 export async function generateMetadata({ params }: Props) {
   const { locale, word: slug } = await params
-  const isJa = locale === 'ja'
-  const label = isJa ? slug : slug.replace(/-in-bisaya$/, '').replace(/-/g, ' ')
+  const label = slug.replace(/-/g, ' ')
 
-  if (isJa) {
+  if (locale === 'ja') {
+    const jaLabel = await getJaLabel(slug)
     return {
-      title: `ビサヤ語で「${label}」の言い方`,
-      description: `ビサヤ語（セブアノ語）で「${label}」はどう言う？発音・意味・例文つき。`,
-      openGraph: { title: `ビサヤ語で「${label}」の言い方` },
+      title: `ビサヤ語で「${jaLabel}」の言い方`,
+      description: `ビサヤ語（セブアノ語）で「${jaLabel}」はどう言う？発音・意味・例文つき。`,
     }
   }
   return {
     title: `How to say "${label}" in Bisaya`,
     description: `How to say "${label}" in Bisaya (Cebuano) — pronunciation, meaning, and example sentences.`,
-    openGraph: { title: `How to say "${label}" in Bisaya` },
   }
 }
 
@@ -42,21 +62,19 @@ export default async function HowToSayPage({ params }: Props) {
   const t = await getTranslations('howToSay')
   const isJa = locale === 'ja'
 
-  // EN slugs have "-in-bisaya" suffix; strip it to get the keyword
-  const keyword = isJa ? slug : slug.replace(/-in-bisaya$/, '')
-  const label = isJa ? keyword : keyword.replace(/-/g, ' ')
-
-  const results = isJa
-    ? await getResultsByJapanese(keyword)
-    : await getResultsByEnglish(keyword)
+  const label = slug.replace(/-/g, ' ')
+  const [results, jaLabel] = await Promise.all([
+    getResultsByEnglish(slug),
+    isJa ? getJaLabel(slug) : Promise.resolve(label),
+  ])
 
   if (results.length === 0) notFound()
+
+  const displayLabel = isJa ? jaLabel : label
 
   const answerText = results
     .map((r) => `${r.word} (${isJa ? r.meaning_ja : r.meaning_en})`)
     .join(', ')
-
-  const canonicalSlug = isJa ? slug : `${keyword}-in-bisaya`
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -64,13 +82,13 @@ export default async function HowToSayPage({ params }: Props) {
     mainEntity: {
       '@type': 'Question',
       name: isJa
-        ? `ビサヤ語で「${label}」はどう言いますか？`
-        : `How do you say "${label}" in Bisaya?`,
+        ? `ビサヤ語で「${displayLabel}」はどう言いますか？`
+        : `How do you say "${displayLabel}" in Bisaya?`,
       answerCount: results.length,
       acceptedAnswer: {
         '@type': 'Answer',
         text: answerText,
-        url: `https://biyoleta.com/${locale}/how-to-say/${canonicalSlug}`,
+        url: `https://biyoleta.com/${locale}/how-to-say/${slug}`,
       },
     },
   }
@@ -85,10 +103,10 @@ export default async function HowToSayPage({ params }: Props) {
         <BackButton label={isJa ? '← 戻る' : '← Back'} />
       </div>
 
-      <h1 className="text-3xl font-bold mb-1">{t('heading', { word: label })}</h1>
+      <h1 className="text-3xl font-bold mb-1">{t('heading', { word: displayLabel })}</h1>
       <p className="text-gray-400 text-sm mb-8">Bisaya (Cebuano)</p>
 
-      <p className="text-gray-600 mb-6">{t('answer', { word: label })}</p>
+      <p className="text-gray-600 mb-6">{t('answer', { word: displayLabel })}</p>
 
       <div className="space-y-4 mb-10">
         {results.map((r, i) => (
@@ -115,7 +133,7 @@ export default async function HowToSayPage({ params }: Props) {
                   <span className="text-xs text-gray-400 mr-2">EN</span>{r.meaning_en}
                 </p>
               )}
-              {r.meaning_ja && (
+              {isJa && r.meaning_ja && (
                 <p className="text-gray-700">
                   <span className="text-xs text-gray-400 mr-2">JA</span>{r.meaning_ja}
                 </p>
@@ -132,7 +150,6 @@ export default async function HowToSayPage({ params }: Props) {
         ))}
       </div>
 
-      {/* Internal links for SEO */}
       <div className="border-t border-gray-100 pt-6">
         <p className="text-xs text-gray-400 mb-3 uppercase tracking-wide">{t('alsoSee')}</p>
         <div className="flex flex-wrap gap-2">

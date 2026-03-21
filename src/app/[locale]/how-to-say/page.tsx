@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
+import { supabase } from '@/lib/supabase'
 import BackButton from '@/components/BackButton'
 
 type Props = { params: Promise<{ locale: string }> }
@@ -9,7 +10,7 @@ export async function generateMetadata({ params }: Props) {
   if (locale === 'ja') {
     return {
       title: 'ビサヤ語での言い方',
-      description: '英語の単語をビサヤ語（セブアノ語）でどう言うか調べられます。',
+      description: '英語や日本語の単語をビサヤ語（セブアノ語）でどう言うか調べられます。',
     }
   }
   return {
@@ -18,14 +19,36 @@ export async function generateMetadata({ params }: Props) {
   }
 }
 
-const EXAMPLE_SEARCHES = ['love', 'friend', 'thank you', 'water', 'food', 'beautiful', 'happy', 'help', 'hello', 'family']
+const EXAMPLES_EN = ['love', 'friend', 'thank you', 'water', 'food', 'beautiful', 'happy', 'help', 'hello', 'family']
+const EXAMPLES_JA = ['愛', '友達', 'ありがとう', '水', '食べ物', '美しい', '嬉しい', '助け', 'こんにちは', '家族']
+
+function toEnSlug(q: string) {
+  return q.trim().toLowerCase().replace(/\s+/g, '-')
+}
 
 async function handleSearch(locale: string, formData: FormData) {
   'use server'
   const q = formData.get('q')?.toString().trim()
-  if (q) {
-    const slug = q.replace(/\s+/g, '-').toLowerCase()
-    redirect(`/${locale}/how-to-say/${slug}-in-bisaya`)
+  if (!q) return
+
+  if (locale === 'ja') {
+    // 日本語入力 → meaning_ja で英語スラッグを取得してリダイレクト
+    const { data } = await supabase
+      .from('meanings')
+      .select('meaning_en')
+      .ilike('meaning_ja', `%${q}%`)
+      .not('meaning_en', 'is', null)
+      .limit(1)
+      .maybeSingle()
+
+    if (data?.meaning_en) {
+      const slug = toEnSlug(data.meaning_en.split(',')[0])
+      redirect(`/ja/how-to-say/${slug}`)
+    }
+    // フォールバック：英語入力として扱う
+    redirect(`/ja/how-to-say/${toEnSlug(q)}`)
+  } else {
+    redirect(`/en/how-to-say/${toEnSlug(q)}`)
   }
 }
 
@@ -43,13 +66,15 @@ export default async function HowToSayIndexPage({ params }: Props) {
         {isJa ? 'ビサヤ語での言い方' : 'How to Say in Bisaya'}
       </h1>
       <p className="text-gray-500 text-sm mb-8">
-        {isJa ? '英語の単語を入力してビサヤ語での言い方を調べましょう' : 'Type any English word to find its Bisaya translation'}
+        {isJa
+          ? '日本語または英語で入力してビサヤ語での言い方を調べましょう'
+          : 'Type any English word to find its Bisaya translation'}
       </p>
       <form action={search} className="w-full max-w-md mx-auto mb-6">
         <div className="flex flex-col gap-3">
           <input
             type="text" name="q" autoFocus
-            placeholder={isJa ? '例：love, thank you, water…' : 'e.g. love, thank you, water…'}
+            placeholder={isJa ? '例：愛、友達、ありがとう…' : 'e.g. love, thank you, water…'}
             className="w-full rounded-full px-5 py-3 text-sm focus:outline-none focus:ring-2 text-gray-800 placeholder-gray-400 border border-gray-200 focus:ring-[#512376]/50"
             style={{ backgroundColor: 'rgba(255,255,255,1)' }}
           />
@@ -63,16 +88,19 @@ export default async function HowToSayIndexPage({ params }: Props) {
           {isJa ? '検索例' : 'Example searches'}
         </p>
         <div className="flex flex-wrap gap-2">
-          {EXAMPLE_SEARCHES.map((term) => (
-            <Link
-              key={term}
-              href={`/${locale}/how-to-say/${term.replace(/\s+/g, '-')}-in-bisaya`}
-              className="text-sm border border-gray-200 rounded-full px-3 py-1 hover:bg-purple-50 transition-colors"
-              style={{ color: '#512376' }}
-            >
-              {term}
-            </Link>
-          ))}
+          {(isJa ? EXAMPLES_JA : EXAMPLES_EN).map((term, i) => {
+            const slug = isJa ? toEnSlug(EXAMPLES_EN[i]) : toEnSlug(term)
+            return (
+              <Link
+                key={term}
+                href={`/${locale}/how-to-say/${slug}`}
+                className="text-sm border border-gray-200 rounded-full px-3 py-1 hover:bg-purple-50 transition-colors"
+                style={{ color: '#512376' }}
+              >
+                {term}
+              </Link>
+            )
+          })}
         </div>
       </div>
     </main>

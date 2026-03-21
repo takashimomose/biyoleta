@@ -17,6 +17,9 @@ export const WORD_CATEGORY_GROUPS: WordCategoryGroup[] = [
       { key: 'affirmation_negation',   en: 'Yes & No',             ja: '肯定・否定' },
       { key: 'modality_cognition',     en: 'Ability & Knowing',    ja: '可能・認知' },
       { key: 'question_words',         en: 'Question Words',       ja: '疑問詞' },
+      { key: 'adverbs',                en: 'Adverbs',              ja: '副詞' },
+      { key: 'particles',              en: 'Particles',            ja: '助詞・小辞' },
+      { key: 'conjunctions',           en: 'Conjunctions',         ja: '接続詞' },
     ],
   },
   {
@@ -26,6 +29,7 @@ export const WORD_CATEGORY_GROUPS: WordCategoryGroup[] = [
       { key: 'cardinal_11_20',  en: 'Numbers 11–20',   ja: '11〜20の数' },
       { key: 'cardinal_large',  en: 'Large Numbers',   ja: '大きな数' },
       { key: 'ordinal',         en: 'Ordinal Numbers', ja: '序数' },
+      { key: 'measurements',    en: 'Measurements',    ja: '単位・計量' },
     ],
   },
   {
@@ -153,12 +157,16 @@ export const WORD_CATEGORY_GROUPS: WordCategoryGroup[] = [
   {
     key: 'society', en: 'Society & Work', ja: '社会・仕事', icon: '1F4BC',
     subCategories: [
-      { key: 'community_places',   en: 'Community Places',    ja: '公共施設・場所' },
-      { key: 'shopping',           en: 'Shopping',            ja: '買い物' },
-      { key: 'money_banking',      en: 'Money & Banking',     ja: 'お金・銀行' },
-      { key: 'mail_communication', en: 'Mail & Communication',ja: '郵便・通信' },
-      { key: 'work_employment',    en: 'Work & Employment',   ja: '仕事・雇用' },
-      { key: 'farming',            en: 'Farming',             ja: '農業' },
+      { key: 'community_places',    en: 'Community Places',     ja: '公共施設・場所' },
+      { key: 'shopping',            en: 'Shopping',             ja: '買い物' },
+      { key: 'money_banking',       en: 'Money & Banking',      ja: 'お金・銀行' },
+      { key: 'mail_communication',  en: 'Mail & Communication', ja: '郵便・通信' },
+      { key: 'work_employment',     en: 'Work & Employment',    ja: '仕事・雇用' },
+      { key: 'farming',             en: 'Farming',              ja: '農業' },
+      { key: 'crime_safety',        en: 'Crime & Safety',       ja: '犯罪・安全' },
+      { key: 'politics_government', en: 'Politics & Government',ja: '政治・政府' },
+      { key: 'history',             en: 'History',              ja: '歴史' },
+      { key: 'media_news',          en: 'Media & News',         ja: 'メディア・報道' },
     ],
   },
   {
@@ -167,6 +175,28 @@ export const WORD_CATEGORY_GROUPS: WordCategoryGroup[] = [
       { key: 'transport_land',    en: 'Land Transport',    ja: '陸の交通' },
       { key: 'transport_air_sea', en: 'Air & Sea',         ja: '空・海の交通' },
       { key: 'accommodation',     en: 'Accommodation',     ja: '宿泊' },
+    ],
+  },
+  {
+    key: 'health', en: 'Health & Medicine', ja: '健康・医療', icon: '1F3E5',
+    subCategories: [
+      { key: 'medical_care',     en: 'Medical Care',       ja: '医療・病院' },
+      { key: 'symptoms_illness', en: 'Symptoms & Injuries', ja: '症状・けが' },
+      { key: 'diseases',         en: 'Diseases',           ja: '病気' },
+    ],
+  },
+  {
+    key: 'entertainment', en: 'Entertainment & Play', ja: '娯楽・遊び', icon: '1F3A8',
+    subCategories: [
+      { key: 'games_leisure',    en: 'Games & Leisure',    ja: 'ゲーム・娯楽' },
+      { key: 'traditional_games',en: 'Traditional Games',  ja: '伝統遊び' },
+    ],
+  },
+  {
+    key: 'culture_religion', en: 'Culture & Religion', ja: '文化・宗教', icon: '26BD',
+    subCategories: [
+      { key: 'religion',           en: 'Religion',          ja: '宗教・信仰' },
+      { key: 'mythology_folklore', en: 'Mythology & Folklore', ja: '神話・民間信仰' },
     ],
   },
   {

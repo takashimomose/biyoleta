@@ -132,7 +132,7 @@ export default async function WordPage({ params }: Props) {
             )}
             {m.meaning_en && !isJa && (
               <Link
-                href={`/${locale}/how-to-say/${m.meaning_en.split(',')[0].trim().toLowerCase().replace(/\s+/g, '-')}-in-bisaya`}
+                href={`/${locale}/how-to-say/${m.meaning_en.split(',')[0].trim().toLowerCase().replace(/\s+/g, '-')}`}
                 className="text-xs text-gray-400 hover:opacity-70"
               >
                 How to say &ldquo;{m.meaning_en.split(',')[0].trim()}&rdquo; in Bisaya →
