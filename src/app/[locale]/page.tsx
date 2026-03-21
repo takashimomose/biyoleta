@@ -19,7 +19,7 @@ export default async function Home({ params }: Props) {
 
   return (
     <main className="relative min-h-screen flex flex-col items-center justify-start px-8 pt-10 overflow-hidden">
-      <div className="fixed inset-0 bg-[url('/hero.jpg')] bg-cover bg-center opacity-20 pointer-events-none -z-10" />
+      {/* <div className="fixed inset-0 bg-[url('/hero.jpg')] bg-cover bg-center opacity-20 pointer-events-none -z-10" /> */}
 
       <Image src="/biyoleta.svg" alt="Biyoleta" width={280} height={48} priority unoptimized className="mb-4 animate-drop-bounce" />
       <p className="mb-1 text-lg font-semibold" style={{ color: '#512376' }}>{t('subtitle')}</p>

@@ -81,12 +81,23 @@ export async function getResultsByEnglish(slug: string): Promise<LanguagePairRes
   })
 }
 
-/** 日本語キーワードに対応するビサヤ語エントリを取得 */
+function hiraganaToKatakana(s: string) {
+  return s.replace(/[\u3041-\u3096]/g, (c) => String.fromCharCode(c.charCodeAt(0) + 0x60))
+}
+function katakanaToHiragana(s: string) {
+  return s.replace(/[\u30A1-\u30F6]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60))
+}
+
+/** 日本語キーワードに対応するビサヤ語エントリを取得（ひらがな↔カタカナ両対応） */
 export async function getResultsByJapanese(keyword: string): Promise<LanguagePairResult[]> {
+  // ひらがな/カタカナ変換したバリアントも含めてOR検索
+  const variants = [...new Set([keyword, hiraganaToKatakana(keyword), katakanaToHiragana(keyword)])]
+  const orFilter = variants.map((v) => `meaning_ja.ilike.%${v}%`).join(',')
+
   const { data } = await supabase
     .from('meanings')
     .select('meaning_en, meaning_ja, example, words(word, part_of_speech)')
-    .ilike('meaning_ja', `%${keyword}%`)
+    .or(orFilter)
   return (data ?? []).map((m: any) => ({
     word: m.words.word,
     part_of_speech: m.words.part_of_speech,
