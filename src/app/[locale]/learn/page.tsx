@@ -18,7 +18,6 @@ export default async function LearnPage({ params }: Props) {
     { href: `/${locale}/quiz`, label: 'Quiz', desc: 'Test your knowledge', icon: '270F' },
     { href: `/${locale}/flashcards`, label: 'Flashcards', desc: 'Practice vocabulary', icon: '1F0CF' },
     { href: `/${locale}/category`, label: 'Categories', desc: 'Browse by topic', icon: '1F5C2' },
-    { href: `/${locale}/translate`, label: 'Translate', desc: 'Translate words & phrases', icon: '1F504' },
   ]
 
   return (

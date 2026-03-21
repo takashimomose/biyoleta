@@ -1,0 +1,533 @@
+word,language,part_of_speech,category,meaning_en,meaning_ja,example
+kumusta,ceb,interjection,greetings,"hello, how are you",こんにちは・元気ですか,Kumusta ka?
+salamat,ceb,interjection,greetings,thank you,ありがとう,Salamat kaayo.
+palihug,ceb,adverb,greetings,please,お願いします,Palihug tabang.
+oo,ceb,interjection,greetings,yes,はい,Oo sige.
+dili,ceb,adverb,greetings,no,いいえ,Dili ko gusto.
+sige,ceb,interjection,greetings,"okay, go ahead",オーケー・どうぞ,Sige na!
+ayaw,ceb,verb,greetings,don't,やめて・〜しないで,Ayaw hilak.
+mao,ceb,pronoun,greetings,"that's it, yes exactly",その通り・そうです,Mao gyud.
+ambot,ceb,interjection,greetings,I don't know,わかりません,Ambot nako.
+dali,ceb,interjection,greetings,"come here, hurry",来て・急いで,Dali na!
+mabuhi,ceb,interjection,greetings,"long live, cheers",万歳・乾杯,Mabuhi ang Pilipinas!
+pasensya,ceb,interjection,greetings,"sorry, pardon me",すみません・ごめんなさい,Pasensya na.
+ako,ceb,pronoun,pronouns_personal,"I, me",私・僕,Ako si Juan.
+ikaw,ceb,pronoun,pronouns_personal,you,あなた,Ikaw ang magbuhat.
+siya,ceb,pronoun,pronouns_personal,"he, she, it",彼・彼女・それ,Siya ang doktor.
+kami,ceb,pronoun,pronouns_personal,"we, us (exclusive)",私たち（相手を含まない）,Kami ang nakabuhat.
+kita,ceb,pronoun,pronouns_personal,"we, us (inclusive)",私たち（相手を含む）,Kita magsugod na.
+sila,ceb,pronoun,pronouns_personal,"they, them",彼ら・彼女ら,Sila ang akong mga higala.
+nako,ceb,pronoun,pronouns_personal,"my, mine",私の,Nako ning balay.
+nimo,ceb,pronoun,pronouns_personal,"your, yours",あなたの,Nimo ba ni?
+niya,ceb,pronoun,pronouns_personal,"his, her, its",彼の・彼女の,Niya ang libro.
+nila,ceb,pronoun,pronouns_personal,"their, theirs",彼らの,Nila ang dula.
+kini,ceb,pronoun,pronouns_demonst,this (near speaker),これ,Kini ang akong balay.
+kana,ceb,pronoun,pronouns_demonst,that (near listener),それ,Kana ang imong kuwarta.
+kadto,ceb,pronoun,pronouns_demonst,that (far),あれ,Kadto ang among eskwelahan.
+dinhi,ceb,adverb,pronouns_demonst,here,ここ,Dinhi ko nagpuyo.
+diha,ceb,adverb,pronouns_demonst,there (near),そこ,Diha siya nalingkod.
+didto,ceb,adverb,pronouns_demonst,there (far),あそこ,Didto ang merkado.
+pamilya,ceb,noun,family_core,family,家族,Ang akong pamilya dako.
+inahan,ceb,noun,family_core,mother,母,Ang akong inahan maayo magluto.
+amahan,ceb,noun,family_core,father,父,Ang akong amahan trabahador.
+nanay,ceb,noun,family_core,mom,お母さん,Nanay adto sa palengke.
+tatay,ceb,noun,family_core,dad,お父さん,Tatay nagbuhat og balay.
+anak,ceb,noun,family_core,"child, son, daughter",子供・息子・娘,Usa ka anak.
+bana,ceb,noun,family_core,husband,夫,Ang akong bana maayo.
+asawa,ceb,noun,family_core,"spouse, wife",配偶者・妻,Si Maria ang akong asawa.
+lolo,ceb,noun,family_core,grandfather,おじいさん,Ang lolo tigulang na.
+lola,ceb,noun,family_core,grandmother,おばあさん,Ang lola maayo magluto.
+kuya,ceb,noun,family_core,older brother,お兄さん,Si Kuya nagdagan.
+ate,ceb,noun,family_core,older sister,お姉さん,Si Ate gwapa.
+manghud,ceb,noun,family_core,younger sibling,弟・妹,Ang akong manghud estudyante.
+higala,ceb,noun,family_core,friend,友達,Siya ang akong higala.
+tiyo,ceb,noun,family_extended,uncle,おじさん,Ang tiyo naa sa Maynila.
+tiya,ceb,noun,family_extended,aunt,おばさん,Si Tiya nagdala og pagkain.
+ig-agaw,ceb,noun,family_extended,cousin,いとこ,Ang akong ig-agaw nindot.
+pamangkin,ceb,noun,family_extended,"nephew, niece",甥・姪,Ang akong pamangkin bata pa.
+managsoon,ceb,noun,family_extended,siblings,兄弟姉妹,Tulo kami managsoon.
+ginikanan,ceb,noun,family_extended,parents,両親,Ang akong ginikanan maayo.
+apo,ceb,noun,family_extended,grandchild,孫,Ang apo sa akong lola.
+silingan,ceb,noun,family_extended,neighbor,隣人,Maayo ang akong silingan.
+batan-on,ceb,noun,life_stages,"young person, youth",若者,Batan-on pa siya.
+tigulang,ceb,noun,life_stages,"old person, elderly",老人・お年寄り,Ang tigulang naghilak.
+babaye,ceb,noun,life_stages,"woman, female",女性・女,Si Maria babaye.
+lalaki,ceb,noun,life_stages,"man, male",男性・男,Si Juan lalaki.
+bata,ceb,noun,life_stages,child,子供,Ang bata naglaro.
+lawas,ceb,noun,body_external,body,体,Ang lawas kinahanglan og pahulayan.
+ulo,ceb,noun,body_external,head,頭,Sakit ang akong ulo.
+buhok,ceb,noun,body_external,hair,髪の毛,Ang iyang buhok taas.
+nawong,ceb,noun,body_external,face,顔,Nindot ang iyang nawong.
+mata,ceb,noun,body_external,eye,目,Itom ang iyang mata.
+dalunggan,ceb,noun,body_external,ear,耳,Dako ang iyang dalunggan.
+ilong,ceb,noun,body_external,nose,鼻,Taas ang iyang ilong.
+baba,ceb,noun,body_external,mouth,口,Abli ang iyang baba.
+ngipon,ceb,noun,body_external,teeth,歯,Limpyo ang iyang ngipon.
+dila,ceb,noun,body_external,tongue,舌,Ang dila importante sa pagsulti.
+liog,ceb,noun,body_external,neck,首,Ang akong liog sakit.
+abaga,ceb,noun,body_external,shoulder,肩,Lapad ang iyang abaga.
+bukton,ceb,noun,body_external,arm,腕,Kusog ang iyang bukton.
+kamot,ceb,noun,body_external,hand,手,Hinay ang iyang kamot.
+tudlo,ceb,noun,body_external,finger,指,Upat ka tudlo.
+dughan,ceb,noun,body_external,chest,胸,Lapad ang iyang dughan.
+tiyan,ceb,noun,body_external,stomach,お腹,Sakit ang akong tiyan.
+likod,ceb,noun,body_external,back,背中,Ang akong likod sakit.
+bitiis,ceb,noun,body_external,leg,脚,Taas ang iyang bitiis.
+tiil,ceb,noun,body_external,foot,足,Hugaw ang iyang tiil.
+tuhod,ceb,noun,body_external,knee,膝,Sakit ang akong tuhod.
+kasingkasing,ceb,noun,body_internal,heart,心臓,Ang kasingkasing importante.
+utok,ceb,noun,body_internal,brain,脳,Ang utok naghunahuna.
+dugo,ceb,noun,body_internal,blood,血,Pula ang dugo.
+bukog,ceb,noun,body_internal,bone,骨,Gahi ang bukog.
+atay,ceb,noun,body_internal,liver,肝臓,Ang atay nagproseso sa pagkain.
+baga,ceb,noun,body_internal,lungs,肺,Ang baga nagpaginhawa.
+tinai,ceb,noun,body_internal,intestines,腸,Ang tinai importante.
+tutunlan,ceb,noun,body_internal,throat,喉,Sakit ang akong tutunlan.
+panit,ceb,noun,body_internal,skin,皮膚,Maputi ang iyang panit.
+ugat,ceb,noun,body_internal,vein/nerve,血管・神経,Ang ugat mosangpot sa kasingkasing.
+malipayon,ceb,adjective,emotions_positive,happy,幸せな,Malipayon siya karon.
+nalipay,ceb,adjective,emotions_positive,glad/pleased,嬉しい,Nalipay ko nimo.
+magaan,ceb,adjective,emotions_positive,"light-hearted, relieved",気が楽になった・安心した,Magaan na ang akong dughan.
+mapainubsanon,ceb,adjective,emotions_positive,humble,謙虚な,Mapainubsanon siya.
+buotan,ceb,adjective,emotions_positive,"kind, good-natured",優しい・親切な,Buotan ang maestro.
+mainantuson,ceb,adjective,emotions_positive,patient,忍耐強い,Mainantuson siya sa trabaho.
+pasalamat,ceb,adjective,emotions_positive,grateful,感謝している,Pasalamat ko nimo.
+maisog,ceb,adjective,emotions_positive,brave,勇敢な,Maisog ang sundalo.
+masulob-on,ceb,adjective,emotions_negative,sad,悲しい,Masulob-on siya karon.
+nasuko,ceb,adjective,emotions_negative,angry,怒っている,Nasuko ang maestro.
+nahadlok,ceb,adjective,emotions_negative,afraid/scared,怖い・恐れている,Nahadlok ang bata.
+naulaw,ceb,adjective,emotions_negative,embarrassed/shy,恥ずかしい,Naulaw siya sa klase.
+lagot,ceb,adjective,emotions_negative,annoyed/frustrated,イライラする,Lagot ko nimo.
+naawa,ceb,adjective,emotions_negative,pitiful/sympathetic,かわいそうな・同情する,Naawa ko kanila.
+natingala,ceb,adjective,emotions_negative,surprised,驚いた,Natingala siya sa balita.
+nasubo,ceb,adjective,emotions_negative,grieved/upset,悲しんでいる,Nasubo siya sa nahitabo.
+lain,ceb,adjective,emotions_complex,weird/different/uncomfortable,変な・違和感のある,Lain ang iyang gibati.
+nasakit,ceb,adjective,emotions_complex,hurt/offended,傷ついた,Nasakit ang akong dughan.
+makuluganon,ceb,adjective,emotions_complex,longing/nostalgic,恋しい・懐かしい,Makuluganon ang iyang kanta.
+buotan,ceb,adjective,personality_traits,"kind, good person",親切な・善良な,Buotan kaayo siya.
+maabtik,ceb,adjective,personality_traits,"smart, clever",賢い・頭の良い,Maabtik ang estudyante.
+matrabahoon,ceb,adjective,personality_traits,hardworking,勤勉な,Matrabahoon ang magsasaka.
+mapuangoron,ceb,adjective,personality_traits,caring/loving,愛情深い,Mapuangoron ang nanay.
+masaligan,ceb,adjective,personality_traits,trustworthy,信頼できる,Masaligan nga tawo.
+masinabuton,ceb,adjective,personality_traits,understanding,理解力がある,Masinabuton ang iyang bana.
+bastos,ceb,adjective,personality_traits,rude,失礼な,Bastos ang iyang sinulti.
+tapolan,ceb,adjective,personality_traits,lazy,怠け者,Tapolan ang estudyante.
+iro,ceb,noun,animals_mammals,dog,犬,Ang iro nagbuhi sa balay.
+iring,ceb,noun,animals_mammals,cat,猫,Ang iring natulog.
+baboy,ceb,noun,animals_mammals,pig,豚,Ang baboy tambok.
+baka,ceb,noun,animals_mammals,cow,牛,Ang baka nagkaon og sagbot.
+kabayo,ceb,noun,animals_mammals,horse,馬,Paspas ang kabayo.
+kalabaw,ceb,noun,animals_mammals,"carabao, water buffalo",カラバオ・水牛,Ang kalabaw magtrabaho sa uma.
+kanding,ceb,noun,animals_mammals,goat,ヤギ,Ang kanding nagkaon sa bukid.
+unggoy,ceb,noun,animals_mammals,monkey,サル,Ang unggoy nagkuha og prutas.
+dagkong,ceb,noun,animals_mammals,mouse/rat,ネズミ,Ang dagkong nagkaon sa kan-on.
+karnero,ceb,noun,animals_mammals,sheep,羊,Puti ang karnero.
+langgam,ceb,noun,animals_birds,bird,鳥,Ang langgam nagkanta.
+agila,ceb,noun,animals_birds,eagle,鷲,Ang agila lumapad.
+uwak,ceb,noun,animals_birds,crow,カラス,Itom ang uwak.
+pato,ceb,noun,animals_birds,duck,アヒル,Ang pato naligo sa suba.
+banog,ceb,noun,animals_birds,hawk/kite,タカ・トビ,Ang banog naglupad.
+kalapati,ceb,noun,animals_birds,dove/pigeon,鳩,Puti ang kalapati.
+isda,ceb,noun,animals_sea_fish,fish,魚,Lami ang isda.
+bangus,ceb,noun,animals_sea_fish,milkfish,バングス・ミルクフィッシュ,Lami ang bangus sa grill.
+tilapia,ceb,noun,animals_sea_fish,tilapia,ティラピア,Nilagang tilapia.
+pusit,ceb,noun,animals_sea_fish,squid,イカ,Piniritong pusit.
+alimasag,ceb,noun,animals_sea_fish,crab,カニ,Ang alimasag sa dagat.
+sugpo,ceb,noun,animals_sea_fish,prawn/shrimp,エビ,Lutong sugpo.
+lumba-lumba,ceb,noun,animals_sea_fish,dolphin,イルカ,Ang lumba-lumba naglupad sa tubig.
+tuna,ceb,noun,animals_sea_fish,tuna,マグロ,Lami ang tuna.
+bitin,ceb,noun,animals_reptiles,snake,ヘビ,Ang bitin makahadlok.
+buaya,ceb,noun,animals_reptiles,crocodile,ワニ,Ang buaya sa sapa.
+baki,ceb,noun,animals_reptiles,frog,カエル,Ang baki nagkanta sa ulan.
+bayawak,ceb,noun,animals_reptiles,monitor lizard,オオトカゲ,Dako ang bayawak.
+pagong,ceb,noun,animals_reptiles,turtle,カメ,Hinay ang pagong.
+lamok,ceb,noun,animals_insects,mosquito,蚊,Ang lamok makadangat og sakit.
+alibangbang,ceb,noun,animals_insects,butterfly,チョウ,Nindot ang alibangbang.
+buyog,ceb,noun,animals_insects,bee,ハチ,Ang buyog nagbuhat og dugos.
+ipis,ceb,noun,animals_insects,cockroach,ゴキブリ,Ang ipis dili maayo.
+langaw,ceb,noun,animals_insects,fly,ハエ,Ang langaw hugaw.
+anay,ceb,noun,animals_insects,termite,シロアリ,Ang anay nagkuha sa kahoy.
+kumo-kumo,ceb,noun,animals_insects,ant,アリ,Gamay ang kumo-kumo.
+bangkaw,ceb,noun,animals_insects,dragonfly,トンボ,Ang bangkaw nalupad sa sapa.
+manok,ceb,noun,animals_domestic,"chicken, rooster",鶏,Ang manok nagpuyo sa uma.
+itik,ceb,noun,animals_domestic,native duck,在来種のアヒル,Ang itik naglakaw sa sapa.
+kuneho,ceb,noun,animals_domestic,rabbit,ウサギ,Puti ang kuneho.
+kanding,ceb,noun,animals_domestic,goat,ヤギ,Ang kanding nagkaon.
+kahoy,ceb,noun,plants_trees,"tree, wood",木・材木,Taas ang kahoy.
+niyog,ceb,noun,plants_trees,coconut tree,ヤシの木,Ang niyog taas kaayo.
+manga,ceb,noun,plants_trees,mango tree,マンゴーの木,Ang manga namunga.
+kawayan,ceb,noun,plants_trees,bamboo,竹,Ang kawayan gahi.
+agoho,ceb,noun,plants_trees,pine-like tree,松に似た木,Ang agoho taas.
+akasya,ceb,noun,plants_trees,acacia tree,アカシアの木,Ang akasya daghan og dahon.
+bulak,ceb,noun,plants_flowers,flower,花,Nindot ang bulak.
+rosas,ceb,noun,plants_flowers,rose,バラ,Pula ang rosas.
+santan,ceb,noun,plants_flowers,ixora flower,サンタンの花,Pula ang santan.
+sampaguita,ceb,noun,plants_flowers,sampaguita flower,サンパギータ,Humot ang sampaguita.
+saging,ceb,noun,plants_fruits,banana,バナナ,Tam-is ang saging.
+mangga,ceb,noun,plants_fruits,mango,マンゴー,Tam-is ang mangga.
+lubi,ceb,noun,plants_fruits,coconut,ナッツ・ヤシの実,Tam-is ang tubig sa lubi.
+papaya,ceb,noun,plants_fruits,papaya,パパイヤ,Madilabon ang papaya.
+pinya,ceb,noun,plants_fruits,pineapple,パイナップル,Maasim ang pinya.
+atis,ceb,noun,plants_fruits,sugar apple,シュガーアップル,Tam-is ang atis.
+guyabano,ceb,noun,plants_fruits,soursop,グヤバノ,Maasim-tam-is ang guyabano.
+mansanas,ceb,noun,plants_fruits,apple,リンゴ,Pula ang mansanas.
+pakwan,ceb,noun,plants_fruits,watermelon,スイカ,Tam-is ang pakwan.
+ubas,ceb,noun,plants_fruits,grapes,ブドウ,Lila ang ubas.
+kamatis,ceb,noun,plants_vegetables,tomato,トマト,Pula ang kamatis.
+sibuyas,ceb,noun,plants_vegetables,onion,玉ねぎ,Ang sibuyas nga paboritong sangkap.
+bawang,ceb,noun,plants_vegetables,garlic,ニンニク,Ang bawang mapungot.
+kangkong,ceb,noun,plants_vegetables,water spinach,空芯菜,Lami ang ginisang kangkong.
+ampalaya,ceb,noun,plants_vegetables,bitter melon,ゴーヤ,Mapait ang ampalaya.
+sitaw,ceb,noun,plants_vegetables,string beans,ささげ・インゲン,Lami ang ginisang sitaw.
+repolyo,ceb,noun,plants_vegetables,cabbage,キャベツ,Puti ang repolyo.
+mais,ceb,noun,plants_grains_root,corn,トウモロコシ,Tam-is ang mais.
+bugas,ceb,noun,plants_grains_root,raw rice,生米,Lutoa ang bugas.
+kamote,ceb,noun,plants_grains_root,sweet potato,サツマイモ,Tam-is ang kamote.
+gabi,ceb,noun,plants_grains_root,taro,タロイモ,Ang gabi malusog.
+luya,ceb,noun,plants_herbs_spices,ginger,生姜,Ang luya tambal.
+tanglad,ceb,noun,plants_herbs_spices,lemongrass,レモングラス,Humot ang tanglad.
+anis,ceb,noun,plants_herbs_spices,anise,アニス,Ang anis humot.
+paminta,ceb,noun,plants_herbs_spices,pepper,コショウ,Mainit ang paminta.
+sili,ceb,noun,plants_herbs_spices,chili pepper,唐辛子,Mainit ang sili.
+rosemary,ceb,noun,plants_herbs_spices,rosemary,ローズマリー,Humot ang rosemary.
+ulan,ceb,noun,weather_phenomena,rain,雨,Nag-ulan kagabi.
+hangin,ceb,noun,weather_phenomena,wind,風,Kusog ang hangin.
+kilat,ceb,noun,weather_phenomena,lightning,稲妻,Nagkidlap ang kilat.
+dugdog,ceb,noun,weather_phenomena,thunder,雷,Kusog ang dugdog.
+bagyo,ceb,noun,weather_phenomena,"typhoon, storm",台風・嵐,Ang bagyo nagabot.
+ting-init,ceb,noun,weather_seasons,"dry season, summer",乾季・夏,Init ang ting-init.
+tag-ulan,ceb,noun,weather_seasons,rainy season,雨季,Ulan pirmi sa tag-ulan.
+dag-om,ceb,noun,weather_phenomena,cloud,雲,Dag-om ang langit.
+langit,ceb,noun,weather_phenomena,"sky, heaven",空・天国,Asul ang langit.
+bahala,ceb,noun,weather_phenomena,haze/fog,もや・霧,Bahala ang kabukiran.
+bukid,ceb,noun,geography_landforms,mountain,山,Taas ang bukid.
+bungtod,ceb,noun,geography_landforms,hill,丘,Gagmay nga bungtod.
+kapatagan,ceb,noun,geography_landforms,plain/flatland,平野,Dako ang kapatagan.
+lung-ag,ceb,noun,geography_landforms,valley,谷,Nindot ang lung-ag.
+langob,ceb,noun,geography_landforms,cave,洞窟,Ngitngit ang langob.
+yuta,ceb,noun,geography_landforms,"land, earth, soil",土地・土,Maayo ang yuta.
+bato,ceb,noun,geography_landforms,"rock, stone",岩・石,Gahi ang bato.
+dagat,ceb,noun,geography_coastal,"sea, ocean",海,Lami ang dagat.
+suba,ceb,noun,geography_coastal,river,川,Naglangoy siya sa suba.
+baybay,ceb,noun,geography_coastal,"beach, shore",ビーチ・海岸,Nindot ang baybay.
+pulo,ceb,noun,geography_coastal,island,島,Nindot ang pulo.
+pagkain,ceb,noun,food_rice_staples,food,食べ物,Lami ang pagkain.
+kan-on,ceb,noun,food_rice_staples,cooked rice,ご飯,Kaon tag kan-on.
+sinangag,ceb,noun,food_rice_staples,fried rice,チャーハン,Lami ang sinangag.
+tinapay,ceb,noun,food_rice_staples,bread,パン,Kan-on og tinapay.
+lugaw,ceb,noun,food_rice_staples,rice porridge,お粥,Mainit nga lugaw.
+pansit,ceb,noun,food_rice_staples,noodles,麺,Lami ang pansit.
+lechon,ceb,noun,food_meat_dishes,roasted whole pig,レチョン・丸焼き豚,Ang lechon paborito.
+adobo,ceb,noun,food_meat_dishes,"adobo (meat stew)",アドボ,Lami ang adobo.
+humba,ceb,noun,food_meat_dishes,"humba (Bisaya pork stew)",フンバ（豚肉料理）,Lami ang humba.
+lechon manok,ceb,noun,food_meat_dishes,roasted chicken,ローストチキン,Lami ang lechon manok.
+sinugba,ceb,noun,food_seafood_dishes,"grilled fish, barbecue",焼き魚・バーベキュー,Lami ang sinugba nga isda.
+kinilaw,ceb,noun,food_seafood_dishes,"raw fish in vinegar, ceviche",酢漬け生魚,Lami ang kinilaw.
+sinuglaw,ceb,noun,food_seafood_dishes,"sinugba and kinilaw combo",焼き魚と酢漬けの組み合わせ,Paborito ang sinuglaw sa Sugbo.
+pinirito,ceb,noun,food_seafood_dishes,"fried fish, fried food",揚げ魚・揚げ物,Pinirito nga isda.
+ginisang gulay,ceb,noun,food_veg_dishes,sauteed vegetables,野菜炒め,Lami ang ginisang gulay.
+laswa,ceb,noun,food_veg_dishes,vegetable soup,野菜スープ,Maluom ang laswa.
+sabaw,ceb,noun,food_soups_stews,"soup, broth",スープ,Mainit nga sabaw.
+sinigang,ceb,noun,food_soups_stews,sour soup stew,シニガン（酸っぱいスープ）,Maasim ang sinigang.
+nilaga,ceb,noun,food_soups_stews,boiled soup,ゆで料理・スープ,Mainit ang nilaga.
+asin,ceb,noun,food_ingredients,salt,塩,Dadag og asin.
+asukar,ceb,noun,food_ingredients,sugar,砂糖,Tam-is kay asukar.
+suka,ceb,noun,food_ingredients,vinegar,酢,Maasim ang suka.
+toyo,ceb,noun,food_ingredients,soy sauce,醤油,Lamian ang toyo.
+lana,ceb,noun,food_ingredients,cooking oil,食用油,Prito sa lana.
+bawang,ceb,noun,food_ingredients,garlic,ニンニク,Ginisa sa bawang.
+itlog,ceb,noun,food_ingredients,egg,卵,Piniritong itlog.
+gata,ceb,noun,food_ingredients,coconut milk,ココナッツミルク,Lami ang gata.
+patis,ceb,noun,food_ingredients,fish sauce,ナンプラー,Tambok ang patis.
+bagoong,ceb,noun,food_fermented,shrimp paste/fermented fish,バゴオン（発酵エビ・魚）,Maasin ang bagoong.
+tuba,ceb,noun,drinks_traditional,coconut wine,ヤシ酒,Tam-is ang tuba.
+basi,ceb,noun,drinks_traditional,sugarcane wine,サトウキビ酒,Ang basi gikan sa tubo.
+lambanog,ceb,noun,drinks_traditional,coconut vodka,ランバノグ（ヤシ焼酎）,Kusog ang lambanog.
+kape,ceb,noun,drinks_modern,coffee,コーヒー,Mainit nga kape.
+tsa,ceb,noun,drinks_modern,tea,お茶,Mainit nga tsa.
+tubig,ceb,noun,drinks_modern,water,水,Inom og tubig.
+gatas,ceb,noun,drinks_modern,milk,牛乳・ミルク,Mainit nga gatas.
+balay,ceb,noun,places_home,house,家,Dako ang akong balay.
+kwarto,ceb,noun,places_home,room,部屋,Usa ka kwarto.
+sala,ceb,noun,places_home,living room,リビング,Naa sila sa sala.
+kusina,ceb,noun,places_home,kitchen,キッチン,Luto siya sa kusina.
+banyo,ceb,noun,places_home,bathroom,お風呂,Naligo siya sa banyo.
+pultahan,ceb,noun,places_home,door,ドア,Abli ang pultahan.
+bintana,ceb,noun,places_home,window,窓,Sirado ang bintana.
+salog,ceb,noun,places_home,floor,床,Limpyo ang salog.
+atop,ceb,noun,places_home,roof,屋根,Nag-ulan sa atop.
+higdaanan,ceb,noun,household_furniture,bed,ベッド,Maayo ang higdaanan.
+mesa,ceb,noun,household_furniture,table,テーブル,Naa sa ibabaw sa mesa.
+silya,ceb,noun,household_furniture,chair,椅子,Lingkod sa silya.
+sopa,ceb,noun,household_furniture,"sofa, couch",ソファ,Naghigda siya sa sopa.
+aparador,ceb,noun,household_furniture,wardrobe/cabinet,ワードローブ・棚,Ang sapatos naa sa aparador.
+eskwelahan,ceb,noun,places_community,school,学校,Adto siya sa eskwelahan.
+ospital,ceb,noun,places_community,hospital,病院,Naadto siya sa ospital.
+simbahan,ceb,noun,places_community,church,教会,Adto kita sa simbahan.
+tindahan,ceb,noun,places_community,"store, shop",店,Palita sa tindahan.
+palengke,ceb,noun,places_community,market,市場,Adto sa palengke si nanay.
+parke,ceb,noun,places_community,park,公園,Naglaro siya sa parke.
+plasa,ceb,noun,places_community,"plaza, town square",広場,Naa sila sa plasa.
+dalan,ceb,noun,places_community,"road, street, path",道,Limpyo ang dalan.
+oras,ceb,noun,time_clock,"hour, time",時間・時刻,Pila na ang oras?
+minuto,ceb,noun,time_clock,minute,分,Usa lang ka minuto.
+segundo,ceb,noun,time_clock,second,秒,Usa ka segundo.
+relo,ceb,noun,time_clock,"clock, watch",時計,Tan-awa ang relo.
+adlaw,ceb,noun,time_days_weeks,"day, sun",日・太陽,Mainit ang adlaw.
+gabii,ceb,noun,time_days_weeks,night,夜,Ngitngit ang gabii.
+buntag,ceb,noun,time_days_weeks,morning,朝,Sayo ang buntag.
+hapon,ceb,noun,time_days_weeks,afternoon,午後,Init ang hapon.
+semana,ceb,noun,time_days_weeks,week,週,Usa ka semana.
+Lunes,ceb,noun,time_days_weeks,Monday,月曜日,Lunes ang iyang adlaw off.
+Martes,ceb,noun,time_days_weeks,Tuesday,火曜日,Martes ang klase.
+Miyerkoles,ceb,noun,time_days_weeks,Wednesday,水曜日,Miyerkoles karon.
+Huwebes,ceb,noun,time_days_weeks,Thursday,木曜日,Huwebes ang miting.
+Biyernes,ceb,noun,time_days_weeks,Friday,金曜日,Biyernes na!
+Sabado,ceb,noun,time_days_weeks,Saturday,土曜日,Sabado ang pahulayan.
+Domingo,ceb,noun,time_days_weeks,Sunday,日曜日,Domingo ang simbahan.
+tuig,ceb,noun,time_months_years,year,年,Usa ka tuig.
+bulan,ceb,noun,time_months_years,"month, moon",月,Usa ka bulan na.
+dekada,ceb,noun,time_months_years,decade,10年,Usa ka dekada.
+ugma,ceb,adverb,time_relative,tomorrow,明日,Ugma ko mobalik.
+gahapon,ceb,adverb,time_relative,yesterday,昨日,Gahapon ulan.
+karon,ceb,adverb,time_relative,"now, today",今・今日,Karon na!
+sunod,ceb,adverb,time_relative,"next, following",次の・来,Sunod semana.
+kaniadto,ceb,adverb,time_relative,"before, in the past",以前・昔,Kaniadto lahi.
+bag-ohay,ceb,adverb,time_relative,recently,最近,Bag-ohay lang siya miabot.
+pirmi,ceb,adverb,time_frequency,always,いつも,Pirmi siya anhi.
+usahay,ceb,adverb,time_frequency,sometimes,時々,Usahay moulan.
+kanunay,ceb,adverb,time_frequency,always/continuously,いつも・常に,Kanunay siyang maayo.
+bihira,ceb,adverb,time_frequency,seldom/rarely,めったに,Bihira siya muadto.
+usa,ceb,number,numbers_cardinal,one,1・一,Usa ra ko.
+duha,ceb,number,numbers_cardinal,two,2・二,Duha kami.
+tulo,ceb,number,numbers_cardinal,three,3・三,Tulo ka buok.
+upat,ceb,number,numbers_cardinal,four,4・四,Upat ka adlaw.
+lima,ceb,number,numbers_cardinal,five,5・五,Lima ka piso.
+unom,ceb,number,numbers_cardinal,six,6・六,Unom ka bulan.
+pito,ceb,number,numbers_cardinal,seven,7・七,Pito ka tawo.
+walo,ceb,number,numbers_cardinal,eight,8・八,Walo ka oras.
+siyam,ceb,number,numbers_cardinal,nine,9・九,Siyam ka minuto.
+napulo,ceb,number,numbers_cardinal,ten,10・十,Napulo ka piso.
+onse,ceb,number,numbers_cardinal,eleven,11・十一,Onse na ang oras.
+dose,ceb,number,numbers_cardinal,twelve,12・十二,Dose ka buwan.
+gatus,ceb,number,numbers_cardinal,hundred,百,Usa ka gatus.
+libo,ceb,number,numbers_cardinal,thousand,千,Usa ka libo.
+milyon,ceb,number,numbers_cardinal,million,百万,Usa ka milyon.
+dako,ceb,adjective,adj_size_shape,"big, large",大きい,Dako ang balay.
+gamay,ceb,adjective,adj_size_shape,"small, little",小さい,Gamay ang kwarto.
+taas,ceb,adjective,adj_size_shape,"tall, high, long",高い・長い,Taas ang kahoy.
+mubo,ceb,adjective,adj_size_shape,"short, low",低い・短い,Mubo ang bata.
+lapad,ceb,adjective,adj_size_shape,wide/broad,広い,Lapad ang dalan.
+pig-ot,ceb,adjective,adj_size_shape,narrow,狭い,Pig-ot ang pultahan.
+baga,ceb,adjective,adj_size_shape,"thick, fat",太い・厚い,Baga ang libro.
+nipis,ceb,adjective,adj_size_shape,thin,薄い,Nipis ang papel.
+bug-at,ceb,adjective,adj_size_shape,heavy,重い,Bug-at ang bag.
+magaan,ceb,adjective,adj_size_shape,light (weight),軽い,Magaan ang dahon.
+pula,ceb,adjective,adj_colors,red,赤,Pula ang bulak.
+asul,ceb,adjective,adj_colors,blue,青,Asul ang langit.
+berde,ceb,adjective,adj_colors,green,緑,Berde ang sagbot.
+dalag,ceb,adjective,adj_colors,yellow,黄色,Dalag ang saging.
+puti,ceb,adjective,adj_colors,white,白,Puti ang sinina.
+itom,ceb,adjective,adj_colors,black,黒,Itom ang iyang buhok.
+orange,ceb,adjective,adj_colors,orange,オレンジ色,Orange ang mantikilya.
+lila,ceb,adjective,adj_colors,purple,紫,Lila ang bulak.
+rosas,ceb,adjective,adj_colors,pink,ピンク,Rosas ang iyang sinina.
+brown,ceb,adjective,adj_colors,brown,茶色,Brown ang kahoy.
+abohon,ceb,adjective,adj_colors,gray,灰色,Abohon ang bato.
+bulawan,ceb,adjective,adj_colors,gold/golden,金・金色,Bulawan ang singsing.
+lami,ceb,adjective,adj_taste_smell,"delicious, tasty",美味しい,Lami ang pagkain.
+mapait,ceb,adjective,adj_taste_smell,bitter,苦い,Mapait ang ampalaya.
+matamis,ceb,adjective,adj_taste_smell,sweet,甘い,Matamis ang mangga.
+maasim,ceb,adjective,adj_taste_smell,sour,酸っぱい,Maasim ang suka.
+maasin,ceb,adjective,adj_taste_smell,salty,しょっぱい,Maasin ang bagoong.
+mainit,ceb,adjective,adj_temperature,"hot, warm",熱い・暑い,Mainit ang sabaw.
+bugnaw,ceb,adjective,adj_temperature,"cold, cool",冷たい・寒い,Bugnaw ang tubig.
+presko,ceb,adjective,adj_temperature,"fresh, cool",新鮮な・涼しい,Presko ang hangin.
+bag-o,ceb,adjective,adj_age,"new, fresh",新しい,Bag-o ang sakyanan.
+daan,ceb,adjective,adj_age,"old, aged",古い,Daan ang balay.
+bata,ceb,adjective,adj_age,young,若い,Bata pa siya.
+tigulang,ceb,adjective,adj_age,old,年老いた,Tigulang na siya.
+gwapa,ceb,adjective,adj_beauty,beautiful (female),美しい（女性）,Gwapa kaayo si Maria.
+gwapo,ceb,adjective,adj_beauty,handsome (male),ハンサム（男性）,Gwapo si Juan.
+matahom,ceb,adjective,adj_beauty,beautiful/elegant,美しい・優雅な,Matahom ang bulak.
+maayo,ceb,adjective,adj_character_good,"good, fine, well",良い・元気,Maayo ang maestro.
+daotan,ceb,adjective,adj_character_neg,"bad, evil",悪い,Daotan ang iyang buhat.
+lisod,ceb,adjective,adj_character_neg,"difficult, hard",難しい,Lisod ang exam.
+sayon,ceb,adjective,adj_character_neg,easy,簡単な,Sayon ang lesson.
+mahal,ceb,adjective,adj_character_good,"expensive, precious, dear",高い・大切な,Mahal ang pagkain.
+barato,ceb,adjective,adj_character_good,"cheap, inexpensive",安い,Barato ang tindahan.
+paspas,ceb,adjective,adj_character_good,fast,速い,Paspas ang kabayo.
+hinay,ceb,adjective,adj_character_good,"slow, gentle, soft",遅い・優しい,Hinay ang iyang sinulti.
+kusog,ceb,adjective,adj_character_good,"strong, loud",強い・大きな音,Kusog ang iyang tingog.
+humok,ceb,adjective,adj_character_good,soft,柔らかい,Humok ang higdaanan.
+gahi,ceb,adjective,adj_character_neg,"hard, firm",硬い,Gahi ang bukog.
+dili tinuod,ceb,adjective,adj_character_neg,"not true, false",嘘・偽り,Dili tinuod ang iyang giingon.
+lakaw,ceb,verb,verbs_walking,"walk, go",歩く・行く,Molakaw ko sa eskwelahan.
+dagan,ceb,verb,verbs_walking,run,走る,Nagdagan ang bata.
+tindug,ceb,verb,verbs_walking,stand up,立つ,Tindug ka!
+lingkod,ceb,verb,verbs_walking,sit down,座る,Lingkod dinhi.
+balik,ceb,verb,verbs_walking,"return, come back",戻る,Mobalik ko ugma.
+adto,ceb,verb,verbs_walking,go (there),行く,Adto ko sa tindahan.
+layas,ceb,verb,verbs_walking,run away/leave,逃げる・去る,Milayas ang iro.
+sulod,ceb,verb,verbs_walking,"enter, go inside",入る,Sulod na kita.
+gawas,ceb,verb,verbs_walking,"exit, go outside",出る・外に出る,Gawas ta!
+lupad,ceb,verb,verbs_walking,"fly, soar",飛ぶ,Nagilupad ang langgam.
+kuha,ceb,verb,verbs_hands,"get, take, grab",取る・もらう,Kuha og tubig.
+hatag,ceb,verb,verbs_hands,give,あげる・渡す,Hatag ko nimo og pagkain.
+putol,ceb,verb,verbs_hands,"cut, chop",切る,Putla ang kahoy.
+gunit,ceb,verb,verbs_hands,"hold, grip",持つ・握る,Gunita ang akong kamot.
+labay,ceb,verb,verbs_hands,throw,投げる,Labay sa bola.
+hipos,ceb,verb,verbs_hands,"tidy up, keep away",片付ける,Hipos ang imong kwarto.
+bukas,ceb,verb,verbs_hands,open,開ける,Bukas ang pultahan.
+sirado,ceb,verb,verbs_hands,close/closed,閉める・閉まっている,Sirado ang tindahan.
+sulti,ceb,verb,verbs_speaking,"speak, say, talk",話す・言う,Nagsulti siya og Bisaya.
+dungog,ceb,verb,verbs_speaking,"hear, listen",聞く・聞こえる,Dungog ka nako!
+pangutana,ceb,verb,verbs_speaking,"ask, question",聞く・質問する,Pangutana siya.
+tubag,ceb,verb,verbs_speaking,answer/reply,答える・返す,Tubaga ang pangutana.
+tawag,ceb,verb,verbs_speaking,"call (out), name",呼ぶ・名前をつける,Tawga siya.
+singgit,ceb,verb,verbs_speaking,shout/yell,叫ぶ,Nakasinggit siya.
+istorya,ceb,verb,verbs_speaking,"tell a story, chat",話す・おしゃべり,Mag-istorya ta.
+ampo,ceb,verb,verbs_speaking,pray,祈る,Mag-ampo ta.
+kaon,ceb,verb,verbs_cooking,eat,食べる,Kaon na kita.
+inom,ceb,verb,verbs_cooking,drink,飲む,Inom og tubig.
+luto,ceb,verb,verbs_cooking,cook,料理する,Nagluto ang nanay.
+prito,ceb,verb,verbs_cooking,fry,揚げる・炒める,Iprito ang isda.
+laga,ceb,verb,verbs_cooking,boil,ゆでる・煮る,Ilagang ang manok.
+sugba,ceb,verb,verbs_cooking,grill/broil,焼く・グリルする,Isugba ang isda.
+palita,ceb,verb,verbs_trade,"buy, purchase",買う,Palita og tinapay.
+baligya,ceb,verb,verbs_trade,sell,売る,Nagbaligya siya og prutas.
+bayad,ceb,verb,verbs_trade,"pay, payment",払う・支払い,Bayari ang imong utang.
+utang,ceb,noun,verbs_trade,debt/loan,借金・借り,Dako ang iyang utang.
+presyo,ceb,noun,verbs_trade,price,値段,Pila ang presyo?
+diskwento,ceb,noun,verbs_trade,discount,割引,Naa bay diskwento?
+trabaho,ceb,verb,verbs_trade,"work, job",働く・仕事,Magtrabaho ko ugma.
+kwarta,ceb,noun,verbs_trade,money,お金,Pila ang kwarta?
+sugod,ceb,verb,verbs_start_stop,"start, begin",始める・始まる,Sugod na kita.
+human,ceb,verb,verbs_start_stop,"finish, done",終わる・完了,Human na siya.
+hunong,ceb,verb,verbs_start_stop,stop,止まる・止める,Hunong na!
+padayon,ceb,verb,verbs_start_stop,"continue, proceed",続ける・続く,Padayon ta!
+naa,ceb,verb,verbs_exist_have,"there is, present, existing",ある・いる,Naa bay tubig?
+wala,ceb,verb,verbs_exist_have,"none, not there, absent",ない・いない,Wala na siya.
+aduna,ceb,verb,verbs_exist_have,"there is (formal), have",ある・持っている,Aduna bay imong pera?
+kinsa,ceb,pronoun,question_words,who,誰,Kinsa ka?
+unsa,ceb,pronoun,question_words,what,何,Unsa man kana?
+diin,ceb,adverb,question_words,where,どこ,Diin ka nagpuyo?
+kanus-a,ceb,adverb,question_words,when,いつ,Kanus-a ka moabot?
+ngano,ceb,adverb,question_words,why,なぜ,Ngano man?
+pila,ceb,adjective,question_words,"how many, how much",いくら・いくつ,Pila man kana?
+unsaon,ceb,adverb,question_words,how,どのように,Unsaon man pagbuhat?
+hain,ceb,adverb,question_words,"which, which one",どれ・どちら,Hain ang imong balay?
+unsa man,ceb,phrase,question_words,what is it,何ですか,Unsa man kana?
+kinsay,ceb,pronoun,question_words,who (subject),誰が,Kinsay nabuhat niini?
+ug,ceb,conjunction,conjunctions,and,〜と・そして,Ako ug ikaw.
+o,ceb,conjunction,conjunctions,or,〜か・または,Mangga o saging?
+pero,ceb,conjunction,conjunctions,but,しかし・でも,Gusto ko pero dili ko pwede.
+kay,ceb,conjunction,conjunctions,"because, for",なぜなら・〜ので,Maayo siya kay buotan.
+bisan,ceb,conjunction,conjunctions,"even though, although, even",たとえ〜でも・〜でさえ,Bisan ulan moadto ko.
+para,ceb,conjunction,conjunctions,"for, in order to, so that",〜のために・〜ために,Para nimo ni.
+kung,ceb,conjunction,conjunctions,"if, when (conditional)",もし・〜ならば,Kung moulan dili ko adto.
+samtang,ceb,conjunction,conjunctions,"while, as long as",〜の間・〜している間,Samtang nagluto siya naminaw.
+ra,ceb,particle,discourse_particles,"only, just",〜だけ・ただ,Usa ra ka adlaw.
+na,ceb,particle,discourse_particles,"already, now (change of state)",もう・すでに,Human na.
+pa,ceb,particle,discourse_particles,"still, yet, more",まだ・もっと,Naa pa siya.
+man,ceb,particle,discourse_particles,emphasis/softening particle,〜ですよ・〜ね（強調・緩和）,Maayo man siya.
+ba,ceb,particle,discourse_particles,question particle,か（疑問）,Maayo ka ba?
+gyud,ceb,particle,discourse_particles,"really, definitely, indeed",本当に・絶対に,Gusto ko gyud.
+bitaw,ceb,particle,discourse_particles,"indeed, actually, you know",実はね・〜でしょ,Bitaw nga maayo siya.
+gani,ceb,particle,discourse_particles,"so, therefore, even",だから・〜すら,Maayo gani siya.
+hay,ceb,interjection,interjections,"sigh, ah, oh",はあ・ため息・あ,Hay nako!
+sus,ceb,interjection,interjections,"gosh, oh my (from Jesus)",まあ・えっ,Sus! Dako kaayo!
+hala,ceb,interjection,interjections,"go on, watch out, oh!",さあ・気をつけて,Hala ka na!
+abay,ceb,interjection,interjections,"wow, oh (surprise)",ワオ・あら（驚き）,Abay! Gwapa kaayo!
+yawa,ceb,interjection,interjections,"damn, devil (expletive)",ちくしょう・悪魔,Yawa kaaayo ka!
+nindot,ceb,adjective,interjections,"nice, beautiful, wonderful",素敵・いい・美しい,Nindot kaayo!
+kaayo,ceb,adverb,adverbs_degree,very/really,とても・非常に,Maayo kaayo.
+daghan,ceb,adjective,adverbs_degree,"many, a lot, much",たくさん・多い,Daghan og tawo.
+diyutay,ceb,adjective,adverbs_degree,"few, little, small amount",少ない・ちょっと,Diyutay ra.
+tanan,ceb,pronoun,adverbs_degree,"all, everything",全て・みんな,Tanan mokaon.
+kaayo,ceb,adverb,adverbs_degree,very (intensifier),とても,Dako kaayo.
+tinuod,ceb,adjective,adverbs_degree,"true, real",本当の・真実,Tinuod ba?
+sigurado,ceb,adjective,adverbs_degree,"sure, certain",確かな・確実な,Sigurado ko.
+siguro,ceb,adverb,adverbs_degree,"maybe, perhaps",たぶん・かもしれない,Siguro moabot siya.
+tingali,ceb,adverb,adverbs_degree,"perhaps, I think",たぶん・〜と思う,Tingali ulan ugma.
+klaro,ceb,adjective,adverbs_degree,"clear, obvious",明確な・明らか,Klaro ba?
+importante,ceb,adjective,adverbs_degree,important,重要な,Importante kaayo.
+espesyal,ceb,adjective,adverbs_degree,special,特別な,Espesyal nga adlaw.
+ibabaw,ceb,adverb,prepositions,"above, on top",上・上に,Naa sa ibabaw sa mesa.
+ilawom,ceb,adverb,prepositions,"below, under, beneath",下・下に,Ilawom sa balay.
+atubangan,ceb,adverb,prepositions,front/in front,前・前に,Naa sa atubangan.
+luyo,ceb,adverb,prepositions,"back, behind",後ろ・後ろに,Naa sa luyo.
+tupad,ceb,adverb,prepositions,"beside, next to",隣・横に,Tupad sa balay.
+taliwala,ceb,adverb,prepositions,"center, middle, between",中間・真ん中,Naa sa taliwala.
+layo,ceb,adjective,prepositions,far,遠い,Layo ang eskwelahan.
+duol,ceb,adjective,prepositions,"near, close",近い,Duol na ta.
+tuo,ceb,adjective,prepositions,right,右,Tuo nga kamot.
+wala,ceb,adjective,prepositions,left,左,Wala nga dalan.
+amihanan,ceb,noun,prepositions,north,北,Amihanan ang hangin.
+habagatan,ceb,noun,prepositions,south,南,Habagatan ang isla.
+sidlakan,ceb,noun,prepositions,east,東,Sidlakan ang adlaw mosidlak.
+kasadpan,ceb,noun,prepositions,west,西,Kasadpan ang adlaw mosalop.
+higugma,ceb,verb,music_arts,"love (verb), to love",愛する,Gihigugma tika.
+pagmahal,ceb,noun,music_arts,"love (noun), affection",愛・愛情,Ang pagmahal sa pamilya.
+kanta,ceb,noun,music_arts,song,歌,Nindot ang kanta.
+sayaw,ceb,noun,music_arts,dance,ダンス・踊り,Nindot ang sayaw.
+musika,ceb,noun,music_arts,music,音楽,Matam-is ang musika.
+harana,ceb,noun,music_arts,serenade,ハラナ（セレナーデ）,Nagharana siya.
+litrato,ceb,noun,technology_general,"photo, picture",写真,Nindot ang litrato.
+telepono,ceb,noun,technology_general,telephone,電話,Tawaga sa telepono.
+kompyuter,ceb,noun,technology_general,computer,コンピュータ,Naa sa kompyuter.
+internet,ceb,noun,technology_general,internet,インターネット,Naa sa internet.
+Sinulog,ceb,noun,festivals_events,"Sinulog festival (Cebu)",シヌログ祭り,Mag-Sinulog ta.
+fiesta,ceb,noun,festivals_events,festival,フィエスタ・祭り,Maayong fiesta!
+Pasko,ceb,noun,festivals_events,Christmas,クリスマス,Malipayon nga Pasko!
+Pascua,ceb,noun,festivals_events,Easter,イースター,Ang Pascua usa ka selebrasyon.
+tinuod,ceb,adjective,proverbs_idioms,"true, real, genuine",本当の・真実,Tinuod gyud kana.
+bakak,ceb,adjective,proverbs_idioms,"lie, false",嘘・偽り,Bakak ang iyang giingon.
+bayanihan,ceb,noun,proverbs_idioms,community cooperation/spirit,バヤニハン（共同作業精神）,Ang bayanihan usa ka tradisyon.
+pasalamat,ceb,noun,festivals_events,"gratitude, thanksgiving",感謝,Dakong pasalamat.
+hunahuna,ceb,noun,mental_states,"thought, think, mind",考え・心,Hunahunaa ang imong buhat.
+nagtuo,ceb,verb,mental_states,"believe, trust",信じる,Nagtuo ko nimo.
+nagduhaduha,ceb,verb,mental_states,doubt/hesitate,疑う・迷う,Nagduhaduha siya.
+damgo,ceb,noun,mental_states,dream,夢,Nindot ang akong damgo.
+pag-asa,ceb,noun,mental_states,"hope, wish",希望,May pag-asa pa.
+sakit,ceb,noun,health_illness,"sickness, pain, illness",病気・痛み,Sakit ang akong ulo.
+hilanat,ceb,noun,health_illness,fever,熱,Naa siyay hilanat.
+ubo,ceb,noun,health_illness,cough,咳,Nagatubo siya.
+sip-on,ceb,noun,health_illness,"cold, flu, runny nose",風邪・鼻水,Naa siyay sip-on.
+samad,ceb,noun,health_illness,"wound, injury",傷,Naa siyay samad.
+himsog,ceb,adjective,health_wellness,healthy,健康な,Himsog siya.
+tambal,ceb,noun,health_treatment,medicine,薬,Inom og tambal.
+doktor,ceb,noun,professions_1,doctor,医者,Doktor si Juan.
+nars,ceb,noun,professions_1,nurse,看護師,Nars si Maria.
+maestro,ceb,noun,professions_1,teacher (male),先生（男性）,Maayo ang maestro.
+maestra,ceb,noun,professions_1,teacher (female),先生（女性）,Maayo ang maestra.
+abogado,ceb,noun,professions_1,lawyer,弁護士,Abogado ang iyang tatay.
+estudyante,ceb,noun,education_school,student,学生・生徒,Estudyante pa siya.
+libro,ceb,noun,education_school,book,本,Dako ang libro.
+lapis,ceb,noun,education_school,pencil,鉛筆,Naa bay lapis?
+papel,ceb,noun,education_school,paper,紙,Hatag og papel.
+bolpen,ceb,noun,education_school,ballpen,ボールペン,Sulat sa bolpen.
+klase,ceb,noun,education_school,class,クラス,Pila ka klase?
+sinina,ceb,noun,clothing_everyday,"clothes, dress",服・ドレス,Nindot ang sinina.
+kamiseta,ceb,noun,clothing_everyday,"shirt, t-shirt",シャツ・Tシャツ,Puti ang kamiseta.
+karsones,ceb,noun,clothing_everyday,pants,ズボン,Bag-o ang karsones.
+sapatos,ceb,noun,clothing_everyday,shoes,靴,Bag-o ang sapatos.
+tsinelas,ceb,noun,clothing_everyday,slippers,サンダル,Ang tsinelas barato.
+medyas,ceb,noun,clothing_everyday,socks,靴下,Puting medyas.
+sakyanan,ceb,noun,transport_land,vehicle,乗り物,Naa bay sakyanan?
+kotse,ceb,noun,transport_land,car,車,Bag-o ang kotse.
+motor,ceb,noun,transport_land,motorcycle,バイク・オートバイ,Paspas ang motor.
+dyipni,ceb,noun,transport_land,jeepney,ジープニー,Sakay sa dyipni.
+bus,ceb,noun,transport_land,bus,バス,Ang bus puno.
+trisiklo,ceb,noun,transport_land,tricycle,トライシクル,Ang trisiklo barato.
+bisikleta,ceb,noun,transport_land,bicycle,自転車,Nindot magtrabaho og bisikleta.
+taksi,ceb,noun,transport_land,taxi,タクシー,Mosakay og taksi.
+barko,ceb,noun,transport_sea,"ship, boat",船,Dako ang barko.
+bangka,ceb,noun,transport_sea,"small boat, outrigger",小舟・アウトリガーボート,Ang bangka gamay.
+eroplano,ceb,noun,transport_air,airplane,飛行機,Lumapad ang eroplano.
+tugpahanan,ceb,noun,transport_air,airport,空港,Adto sa tugpahanan.
+simbahan,ceb,noun,religion_christian,church,教会,Adto kita sa simbahan.
+Dios,ceb,noun,religion_christian,God,神,Salamat sa Dios.
+pari,ceb,noun,religion_christian,priest,神父,Ang pari nagmisa.
+misa,ceb,noun,religion_christian,mass (church),ミサ,Naa kita sa misa.
+panalangin,ceb,noun,religion_christian,prayer,祈り・お祈り,Mag-ampo ta.

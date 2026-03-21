@@ -6,7 +6,13 @@
       "Bash(npm run:*)",
       "Bash(sed:*)",
       "Bash(do:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(where:*)",
+      "Bash(node:*)",
+      "Bash(\"C:/Users/mosor/Downloads/biyoleta/cebuano_tools/bisaya_2000.csv\":*)",
+      "Bash(rm:*)",
+      "Bash(python:*)",
+      "Bash(PGPASSWORD=VZiGfH0U4KHnR4ua \"/c/Program Files/PostgreSQL/17/bin/psql\":*)"
     ]
   }
 }
