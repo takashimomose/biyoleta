@@ -30,7 +30,7 @@ export default async function CategorySlugPage({ params }: Props) {
   const isPos = slug.startsWith('pos-')
   const value = slug.replace(/^(category-|pos-)/, '')
 
-  const query = supabase.from('words').select('*').order('word')
+  const query = supabase.from('words').select('*').order('id')
   const { data: words } = isPos
     ? await query.eq('part_of_speech', value)
     : await query.eq('subcategory', value)
